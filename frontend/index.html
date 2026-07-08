@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolicyLens | Thapar Institute Academic Gateway</title>
+    <meta name="description" content="PolicyLens - Master your academic schemes, policies, and regulations.">
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Link to Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Interactive Background Fluid Canvas (Jellyfish tail animation) -->
+    <canvas id="fluid-canvas"></canvas>
+    
+    <!-- Grid Overlay Background -->
+    <div class="grid-overlay"></div>
+
+    <!-- Animated Background Blobs for Scrolled Views -->
+    <div class="css-blob-bg blob-magenta"></div>
+    <div class="css-blob-bg blob-cyan"></div>
+
+    <!-- Premium Header Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-logo" onclick="switchTab('home')">
+                <!-- SVG Logo representing PolicyLens (Neuro-network + Orb) -->
+                <svg viewBox="0 0 100 100" class="logo-svg">
+                    <circle cx="50" cy="50" r="30" class="logo-ring" />
+                    <circle cx="50" cy="50" r="10" class="logo-core" />
+                    <line x1="50" y1="20" x2="50" y2="35" class="logo-line" />
+                    <line x1="50" y1="65" x2="50" y2="80" class="logo-line" />
+                    <line x1="20" y1="50" x2="35" y2="50" class="logo-line" />
+                    <line x1="65" y1="50" x2="80" y2="50" class="logo-line" />
+                </svg>
+                <span class="logo-text">PolicyLens</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" id="tab-home" onclick="switchTab('home')">Home</button>
+                <button class="nav-link" id="tab-docs" onclick="switchTab('docs')">Docs</button>
+                <button class="nav-link" id="tab-chat" onclick="switchTab('chat')">Chat Workspace</button>
+            </div>
+            <div class="nav-actions">
+                <button class="signin-btn" onclick="switchTab('chat')">Try it now ✨</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+
+        <!-- ==========================================================================
+             PAGE 1: HOME LANDING PAGE
+             ========================================================================== -->
+        <section class="page-view active" id="view-home">
+            <div class="hero-grid-container">
+                <!-- Left Column: Hero copy details -->
+                <div class="hero-left-content">
+                    <div class="animated-title-wrapper">
+                        <div class="floating-orb orb-1"></div>
+                        <div class="floating-orb orb-2"></div>
+                        <h1 class="hero-title">
+                            Unlock Academic Intelligence<br>
+                            <span class="gradient-text animated-gradient">Powered by PolicyLens</span>
+                        </h1>
+                    </div>
+                    
+                    <p class="hero-subtitle">
+                        PolicyLens is a secure cognitive gateway indexing over <strong>100+ Thapar official documents</strong>. Built on a Retrieval Augmented Generation (RAG) architecture, it references tuition fee charts, PG/UG prospectus schedules, course catalogs, credit lists, and Hostel rules to answer academic queries with high accuracy.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <button class="primary-btn" onclick="switchTab('chat')">Try it now ✨</button>
+                        <button class="secondary-btn" onclick="scrollToFeatures()">Explore Features ↓</button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Live Platform Request Terminal (Tilantra layout) -->
+                <div class="hero-right-terminal">
+                    <!-- Hover Badge Left -->
+                    <div class="hover-badge uptime-badge">
+                        <span class="badge-percentage">99.2%</span>
+                        <span class="badge-label">Uptime this semester</span>
+                    </div>
+
+                    <!-- Main Terminal Panel -->
+                    <div class="live-terminal-card">
+                        <div class="terminal-header">
+                            <div class="header-title-row">
+                                <span class="pulse-dot"></span>
+                                <span class="terminal-title">POLICYLENS ENGINE</span>
+                                <span class="live-label">Live</span>
+                            </div>
+                            <span class="req-speed" id="req-speed-indicator">942 req/min</span>
+                        </div>
+
+                        <!-- Live Logs Table -->
+                        <div class="terminal-table-wrapper">
+                            <table class="terminal-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%">TYPE</th>
+                                        <th style="width: 45%">QUERY / EVENT</th>
+                                        <th style="width: 30%">OUTCOME</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="live-requests-tbody">
+                                    <!-- Populated dynamically via JS -->
+                                    <tr class="log-row">
+                                        <td><span class="type-pill pill-routed">Routed</span></td>
+                                        <td class="log-query">CS fee structure</td>
+                                        <td class="log-outcome outcome-success">saved $0.18 - 8ms</td>
+                                    </tr>
+                                    <tr class="log-row">
+                                        <td><span class="type-pill pill-caching">Cached</span></td>
+                                        <td class="log-query">Hostel room criteria</td>
+                                        <td class="log-outcome outcome-purple">matched Redis key</td>
+                                    </tr>
+                                    <tr class="log-row">
+                                        <td><span class="type-pill pill-retrieval">MMR</span></td>
+                                        <td class="log-query">ECE course syllabus</td>
+                                        <td class="log-outcome outcome-blue">retrieved 5 docs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Hover Badge Right -->
+                    <div class="hover-badge leaks-badge">
+                        <span class="badge-count">0</span>
+                        <span class="badge-label">compliance leaks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Section 1: Features -->
+            <div class="scroll-section" id="features-section">
+                <div class="section-badge">Platform Overview</div>
+                <h2 class="section-title">The Cognitive Layer for Thapar University</h2>
+                <p class="section-subtitle">
+                    Fast, accurate, and completely aligned with Thapar Academic Guidelines.
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🔍</div>
+                        <h4>100+ Corpus Documents</h4>
+                        <p>Fully indexing the complete Thapar course catalog, hostel circulars, tuition schedules, admission criteria, and academic handbooks.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🛡️</div>
+                        <h4>Absolute Privacy</h4>
+                        <p>Your session queries are cached locally or routed through secure Upstash connections. Zero data is shared for model training.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">📉</div>
+                        <h4>Optimized MMR Vectors</h4>
+                        <p>Maximum Marginal Relevance search handles high-density text layouts, ensuring citations map to precise pages and lines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Section 2: Detailed About & Privacy -->
+            <div class="scroll-section">
+                <div class="section-badge">Security & Scope</div>
+                <div class="about-container">
+                    <div class="about-card animate-on-scroll">
+                        <h4>Our Document Library</h4>
+                        <p>
+                            PolicyLens references an exhaustive set of <strong>100+ primary source documents</strong> from Thapar Institute of Engineering and Technology (TIET). This includes tuition fee circulars, PG/UG prospectus schedules, course catalogs, credit lists, and Hostel rules.
+                        </p>
+                        <p>
+                            Every response generated is explicitly cross-referenced. If information cannot be verified directly in the database, the system alerts you and cites its source files to prevent errors.
+                        </p>
+                    </div>
+                    <div class="about-card animate-on-scroll">
+                        <h4>Privacy Commitment</h4>
+                        <p>
+                            We prioritize your academic data security. Your conversation history is handled through clean Redis-capped namespaces and falls back to browser-localized memory sessions if needed.
+                        </p>
+                        <p>
+                            We use secure Serverless router pipelines to handle LLM fallbacks, ensuring that queries are processed directly and never stored by external APIs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             PAGE 2: POLICY DOCUMENTS EXPLORER
+             ========================================================================== -->
+        <section class="page-view" id="view-docs">
+            <div class="docs-explorer-container">
+                <div class="section-badge">Reference Repository</div>
+                <h2 class="section-title">Ingested Policy Library</h2>
+                <p class="section-subtitle">
+                    Select a document to immediately query its contents.
+                </p>
+
+                <div class="docs-grid">
+                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What is the tuition fee structure for different UG programs in 2026?')">
+                        <div class="doc-badge">PDF</div>
+                        <h4>05_TUITION_FEE_AND_OTHER_DUES.pdf</h4>
+                        <p>Details tuition rates, development charges, and enrollment dues across UG branches.</p>
+                        <span class="card-action">Query Document →</span>
+                    </div>
+                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('Show me the course schemes and credits for UG ECE program.')">
+                        <div class="doc-badge">PDF</div>
+                        <h4>06_ADMISSION_TO_FIRST_YEAR_UG_PROGRAM.pdf</h4>
+                        <p>Admissions handbook, JEE criteria, and core UG course matrix templates.</p>
+                        <span class="card-action">Query Document →</span>
+                    </div>
+                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What are the rules and guidelines for hostel room allotment?')">
+                        <div class="doc-badge">PDF</div>
+                        <h4>Prospectus_TPC_2026-27.pdf</h4>
+                        <p>Thapar prospectus containing intake metrics, regulations, and hostel layouts.</p>
+                        <span class="card-action">Query Document →</span>
+                    </div>
+                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What is the grading system and CGPA rules in academic regulations?')">
+                        <div class="doc-badge">PDF</div>
+                        <h4>AcademicRegulations.pdf</h4>
+                        <p>Official academic codes, grading schemas, CGPA calculators, and degree limits.</p>
+                        <span class="card-action">Query Document →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             PAGE 3: CHAT WORKSPACE
+             ========================================================================== -->
+        <section class="page-view" id="view-chat">
+            <div class="chat-main-layout">
+                <header class="chat-header-bar">
+                    <div class="header-session-info">
+                        <span class="session-label">Session ID:</span>
+                        <span class="session-value" id="session-id-display">Generating...</span>
+                    </div>
+                    <button class="new-session-btn" id="reset-session-btn">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73"/></svg>
+                        Reset Thread
+                    </button>
+                </header>
+
+                <div class="chat-viewport" id="chat-viewport">
+                    <div class="chat-messages-container" id="chat-messages-container"></div>
+                </div>
+
+                <div class="prompt-dock-container">
+                    <!-- Image Attachment Preview panel -->
+                    <div class="image-preview-tray" id="image-preview-tray" style="display: none;">
+                        <div class="preview-item">
+                            <img src="" alt="Thumbnail" id="image-preview-thumbnail">
+                            <button class="remove-preview-btn" id="remove-image-preview-btn" aria-label="Remove image">
+                                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                            </button>
+                        </div>
+                        <span class="preview-text">Image attached (Vision model active)</span>
+                    </div>
+
+                    <!-- Modern Floating Input Bar -->
+                    <div class="floating-prompt-bar">
+                        <input type="file" id="image-file-input" accept="image/*" style="display: none;">
+                        
+                        <!-- Plus Button for attachments -->
+                        <button class="prompt-btn plus-btn" id="image-upload-btn" title="Attach file or screenshot" aria-label="Attach File">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                        
+                        <!-- Text Input -->
+                        <div class="prompt-textarea-wrapper">
+                            <textarea class="prompt-textarea" id="chat-input" placeholder="Write a message..." rows="1" required></textarea>
+                        </div>
+                        
+                        <!-- Actions Cluster on the right -->
+                        <div class="prompt-actions-cluster">
+                            <!-- Model Selector Dropdown -->
+                            <div class="model-select-wrapper">
+                                <select class="model-select" id="model-selector-dropdown">
+                                    <option value="groq-70b">Llama 3.3 70B</option>
+                                    <option value="qwen-2.5">Qwen 2.5 7B</option>
+                                    <option value="groq-8b">Llama 3.1 8B</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Mic Button -->
+                            <button class="prompt-btn mic-btn" id="voice-record-btn" title="Record voice question" aria-label="Record voice">
+                                <svg class="mic-icon" id="mic-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 1v11M19 10v2a7 7 0 0 1-14 0v-2M12 23v-4"/>
+                                    <rect x="9" y="5" width="6" height="8" rx="3"/>
+                                </svg>
+                                <span class="record-pulse-wave" id="mic-pulse-wave" style="display: none;"></span>
+                            </button>
+                            
+                            <!-- Send Button -->
+                            <button class="prompt-btn send-btn" id="send-message-btn" title="Send message" aria-label="Send message">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Script imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
