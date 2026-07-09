@@ -1,4 +1,4 @@
-# 🪼 PolicyLens — Multimodal TIET Policy RAG Chatbot
+# 🪼 PolicyLens — Multimodal RAG Based System for Information Retrieval from TIET Policy Documents
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  PolicyLens is an AI-powered conversational agent designed to retrieve accurate information from Thapar Institute of Engineering and Technology (TIET) academic policies, syllabus schemes, and official circulars using Retrieval-Augmented Generation (RAG).
+  PolicyLens is an advanced intelligent search and conversational system developed to index, organize, and query official academic regulations, course schemes, fee sheets, and hostel policies of the Thapar Institute of Engineering and Technology (TIET).
 </p>
 
 ---
@@ -24,9 +24,9 @@
 ---
 
 ## 💡 Why I Built This Project
-Thapar Institute publishes all of its academic policies, credit lists, fee structures, and campus regulations across dozens of separate, complex PDF documents. For students, parents, and faculty, finding a specific rule—such as hostel allotment criteria, grading policies, or course schemes—requires opening and reading through hundreds of pages. 
+Every year, students, parents, and faculty spend hours digging through dozens of different TIET PDF guides, circulars, and handbooks to find specific details—such as tuition fee details, course credits, grading requirements, or hostel eligibility guidelines. These rules are scattered across hundreds of pages, making manual search slow and confusing.
 
-I built PolicyLens to simplify this process. By creating a unified search interface, users can ask questions in plain English, speak their queries, or upload screenshots. The system instantly scans the official documents, extracts the relevant guidelines, and lists the answers clearly with direct source citations to save time and reduce confusion.
+I built PolicyLens to consolidate all of these scattered official documents into a single, cohesive, smart chatbot interface. By utilizing Retrieval-Augmented Generation, users can ask questions in plain English, speak their queries, or upload screenshots of circulars, and instantly receive exact point-wise answers verified directly against official sources.
 
 ---
 
@@ -45,17 +45,29 @@ I built PolicyLens to simplify this process. By creating a unified search interf
 
 ## 🎨 System Architecture & Workflow
 
+Here is the architectural overview of how PolicyLens processes data and handles queries:
+
 ![System Architecture](architecture.png)
 
-The application coordinates data flows across the following modules:
+### 1. Offline Document Ingestion Pipeline (One-Time Ingestion)
+Before users can query the system, the document library is indexed using a structured ingestion pipeline:
+*   **TIET Policy Documents (PDFs):** Official prospectuses, fee sheets, and circulars are placed in the ingestion queue.
+*   **Text & Table Extraction:** A parser extracts structured text, tabular data, and images from the documents.
+*   **Semantic Chunking:** The extracted content is broken down into small, semantically meaningful text blocks (chunks) with overlap to preserve context across boundaries.
+*   **Embedding Generation:** Each text chunk is converted into a 768-dimension vector embedding using the Hugging Face `bge-base-en-v1.5` Sentence Transformer.
+*   **Vector Storage:** The generated vector embeddings, along with original text and file metadata (filename, page numbers), are stored in the Qdrant Cloud vector database.
 
-1.  **WebGL Web UI (Frontend):** Renders the user-interactive chat window, WebGL fluid canvas, and handles browser speech-to-text recording and audio playback.
-2.  **FastAPI Backend Server:** Acts as the primary router and controller. It parses form data, writes temporary image/voice assets, tracks API rate-limits, and coordinates database updates.
-3.  **Multimodal Input Processing:**
-    *   **Audio Inputs** are sent to Groq's Whisper-Large-v3 engine to receive high-fidelity transcriptions.
-    *   **Image Inputs** are base64-encoded and passed to Llama 4 Scout Vision API to identify topics or text content.
-4.  **Embedding & Vector Retrieval:** Query text is translated to a 768-dimension vector using Hugging Face's `bge-base-en-v1.5` model. Qdrant Cloud compares it against document vectors, returning the top matches.
-5.  **Chain Assembly & Generation:** LangChain retrieves previous message logs from Upstash Redis, combines them with the Qdrant document contexts, and feeds the formatted prompt to Groq's Llama 3.3 70B model to generate the final response.
+### 2. Online Query Retrieval & Generation Pipeline (Real-Time Execution)
+When a user interacts with the application:
+1.  **User Input:** The user submits a query via **Text**, **Voice** (recording), or **Image** (screenshot) through the Web UI.
+2.  **Input Processing:** The FastAPI Backend receives the request:
+    *   *Voice recordings* are transcribed to text using Groq's Whisper Large v3 (STT) model.
+    *   *Images* are parsed and analyzed using Groq's Llama 4 Scout Vision model to extract questions or tabular data.
+3.  **Embedding Generation:** The resulting search text query is converted into a vector representation using the same Sentence Transformer.
+4.  **Vector Search:** The query vector is matched against the Qdrant Cloud database. The system retrieves the top relevant document chunks using MMR (Maximum Marginal Relevance) to ensure relevance and diversity of information.
+5.  **Context & Prompt Assembly:** The backend retrieves the session's chat history from Upstash Redis and assembles a structured prompt containing the retrieved document chunks, historical conversation logs, and the active query.
+6.  **AI Response Generation:** The prompt is sent to the Groq LLM (Llama 3.3 70B), which generates a precise, point-wise answer grounded strictly in the retrieved official documents, complete with page citations.
+7.  **Answer Display:** The Web UI displays the formatted text answer and plays a vocalized audio response using Text-to-Speech (TTS).
 
 ---
 
@@ -147,4 +159,3 @@ Start the FastAPI server:
 ```bash
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-Open **127.0.0.1:8000** or **localhost:8000** in your web browser.
