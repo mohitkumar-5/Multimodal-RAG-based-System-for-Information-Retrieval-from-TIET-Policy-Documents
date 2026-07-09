@@ -1,44 +1,45 @@
-# Multimodal RAG Based System for Information Retrieval from TIET Policy Documents (PolicyLens)
+# 🪼 PolicyLens — Multimodal TIET Policy RAG Chatbot
 
-PolicyLens is a state-of-the-art, highly accurate, and secure multimodal information retrieval system designed to index and extract knowledge from Thapar Institute of Engineering and Technology (TIET) official academic policies, regulations, syllabus schemes, and student guidelines.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain">
+  <img src="https://img.shields.io/badge/Qdrant-DF3A1A?style=for-the-badge&logo=qdrant&logoColor=white" alt="Qdrant">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Groq_API-F55A42?style=for-the-badge&logo=groq&logoColor=white" alt="Groq">
+</p>
+
+<p align="center">
+  PolicyLens is an AI-powered conversational agent designed to retrieve accurate information from Thapar Institute of Engineering and Technology (TIET) academic policies, syllabus schemes, and official circulars using Retrieval-Augmented Generation (RAG).
+</p>
 
 ---
 
-## 🚀 Live Demo / Website
-> 🔗 **Website Link:** *[To be added later]*
-
----
+## 🚀 Live Website
+*   **Link:** *[To be added later]*
 
 ## 🎥 Project Demo Video
-> 📹 **Demo Video:** *[To be added later]*
+*   **Video Link:** *[To be added later]*
 
 ---
 
 ## 💡 Why I Built This Project
-Navigating through university guidelines, fee structures, credit requirements, and hostel rules across dozens of different PDFs is slow and frustrating for students and parents. Furthermore, commercial, general-purpose LLMs (like standard ChatGPT) suffer from **hallucinations** and lack access to the private, specific documents of TIET.
+Thapar Institute publishes all of its academic policies, credit lists, fee structures, and campus regulations across dozens of separate, complex PDF documents. For students, parents, and faculty, finding a specific rule—such as hostel allotment criteria, grading policies, or course schemes—requires opening and reading through hundreds of pages. 
 
-I built this project to act as a **zero-hallucination cognitive layer** for TIET. Grounded strictly in verified official source documents via Retrieval-Augmented Generation (RAG), PolicyLens provides point-wise, cited answers instantly, making academic rules and schemes easily accessible to everyone.
-
----
-
-## 🛠️ Tech Stack & Libraries
-*   **Backend:** ![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54) Python 3.10+, ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi) FastAPI, ![Uvicorn](https://img.shields.io/badge/Uvicorn-000000?style=flat&logo=gunicorn&logoColor=white) Uvicorn
-*   **Frontend:** ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white) HTML5, ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white) CSS3 (Vanilla), ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=flat&logo=javascript&logoColor=black) JavaScript (Vanilla), ![Three.js](https://img.shields.io/badge/three.js-000000?style=flat&logo=three.js&logoColor=white) Three.js (WebGL Jellyfish Liquid Blob Mouse follower background)
-*   **RAG Framework:** ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat&logo=langchain&logoColor=white) LangChain (LCEL)
-*   **Vector Database:** ![Qdrant](https://img.shields.io/badge/Qdrant-DF3A1A?style=flat&logo=qdrant&logoColor=white) Qdrant Cloud (Vector Database)
-*   **Cache & Database:** ![Upstash Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white) Upstash Redis (Memory & Rate Limiting)
-*   **Inference API:** ![Groq](https://img.shields.io/badge/Groq-f55a42?style=flat&logo=groq&logoColor=white) Groq API
+I built PolicyLens to simplify this process. By creating a unified search interface, users can ask questions in plain English, speak their queries, or upload screenshots. The system instantly scans the official documents, extracts the relevant guidelines, and lists the answers clearly with direct source citations to save time and reduce confusion.
 
 ---
 
-## 📊 About the Data
-The system is built to search and understand **100+ official TIET documents** (PDF format), including:
-*   UG & PG Prospectus and Schemes
-*   Tuition Fee Structures and Scholarship Handbooks
-*   Academic Course Catalogs & Credit Requirements
-*   Hostel Accommodation Rules & General Guidelines
+## ✨ Features
 
-> 🔒 **Data Privacy & Ingestion:** The actual PDF files are not included in this GitHub repository for storage and privacy reasons. However, you can automatically download and collect them using the provided `thapar_rag_scraper.py` script.
+*   📁 **Supports 100+ TIET documents:** Indexes prospectus schedules, course catalogs, and academic rulebooks.
+*   🎙️ **Voice Query Input:** Capture speech queries directly through the microphone with automatic transcription.
+*   🖼️ **Visual OCR/Image Input:** Process screenshots of tables, schedules, or circulars to ask questions about them.
+*   🗣️ **Text-to-Speech (TTS):** Play voice output of the generated answers.
+*   🔍 **Semantic Search:** Grounded in Qdrant Cloud Vector Database and BGE dense vector embeddings.
+*   ⚡ **Hybrid MMR Retrieval:** Utilizes Maximum Marginal Relevance to retrieve diverse, non-redundant contexts.
+*   🧠 **Conversational Memory:** Remembers context across chat turns using Upstash Redis.
+*   🎨 **Interactive Web UI:** Features a custom fluid WebGL jellyfish mouse-interactive background.
 
 ---
 
@@ -46,15 +47,15 @@ The system is built to search and understand **100+ official TIET documents** (P
 
 ![System Architecture](architecture.png)
 
-1.  **User Input:** The user provides query input in the form of **Text**, **Voice**, or **Image** (e.g. screenshot of a fee table or syllabus scheme) through the Frontend Web UI.
-2.  **FastAPI Backend processing:**
-    *   **Voice queries** are transcribed to text using Groq's Whisper Large v3 (STT).
-    *   **Image queries** are processed by Groq's Llama 4 Scout Vision model to extract text details.
-3.  **Embedding Generation:** The search text is converted into dense vector embeddings using the `BAAI/bge-base-en-v1.5` model.
-4.  **Vector Retrieval:** The query vector is searched against **Qdrant Cloud** using MMR (Maximum Marginal Relevance) to retrieve the top-K relevant document chunks while avoiding redundant info.
-5.  **Prompt & Context Construction:** The retrieved document contents and context source details are formatted along with historical chat memory loaded from **Upstash Redis**.
-6.  **LLM Generation:** The prompt is sent to **Groq Llama 3.3 70B** to generate a point-wise response, strictly grounded in the document context.
-7.  **Final Response:** The answer text is sent to the frontend, where it is displayed and optionally played as voice output via Text-to-Speech (gTTS).
+The application coordinates data flows across the following modules:
+
+1.  **WebGL Web UI (Frontend):** Renders the user-interactive chat window, WebGL fluid canvas, and handles browser speech-to-text recording and audio playback.
+2.  **FastAPI Backend Server:** Acts as the primary router and controller. It parses form data, writes temporary image/voice assets, tracks API rate-limits, and coordinates database updates.
+3.  **Multimodal Input Processing:**
+    *   **Audio Inputs** are sent to Groq's Whisper-Large-v3 engine to receive high-fidelity transcriptions.
+    *   **Image Inputs** are base64-encoded and passed to Llama 4 Scout Vision API to identify topics or text content.
+4.  **Embedding & Vector Retrieval:** Query text is translated to a 768-dimension vector using Hugging Face's `bge-base-en-v1.5` model. Qdrant Cloud compares it against document vectors, returning the top matches.
+5.  **Chain Assembly & Generation:** LangChain retrieves previous message logs from Upstash Redis, combines them with the Qdrant document contexts, and feeds the formatted prompt to Groq's Llama 3.3 70B model to generate the final response.
 
 ---
 
@@ -62,13 +63,13 @@ The system is built to search and understand **100+ official TIET documents** (P
 ```text
 PolicyLens/
 ├── app/                     # Backend Source Code
-│   ├── database.py          # Upstash Redis connections, rate limiting, and feedback DB
-│   ├── main.py              # FastAPI endpoints, routing, and CORS setup
+│   ├── database.py          # Redis connections, rate limiting, and feedback aggregates
+│   ├── main.py              # FastAPI endpoints, routers, and CORS setup
 │   └── rag.py               # Core LangChain RAG pipeline, LLM routers, and prompts
-├── frontend/                # SPA Static Web UI
-│   ├── app.js               # Chat state, speech recognition, and WebGL Three.js canvas
-│   ├── index.html           # Main Single Page App (Home, Docs, Chat Workspace)
-│   ├── style.css            # Custom CSS theme, glassmorphism, and animations
+├── frontend/                # Single Page App Static Web UI
+│   ├── app.js               # State management, speech transcription api, and WebGL code
+│   ├── index.html           # Main Single Page App structure
+│   ├── style.css            # Custom CSS style, glassmorphism templates, and animations
 │   └── vercel.json          # Vercel deployment configurations
 ├── notebooks/               # Interactive Playground
 │   └── TIET_RAG_Pipeline.ipynb # 16-step complete Jupyter notebook
@@ -90,7 +91,7 @@ PolicyLens/
 *   **Speech-to-Text (STT):** `Whisper Large v3` (via Groq) — For accurate voice transcriptions.
 *   **Text-to-Speech (TTS):** `gTTS` (Google Text-To-Speech) — For playing vocalized answers.
 *   **Semantic Embeddings:** `BAAI/bge-base-en-v1.5` — High-performance dense vector model.
-*   **Fallback LLM:** `Qwen 2.5 7B` (via Hugging Face API) / `Llama 3.1 8B` (via Groq) — As automated high-availability backup chains.
+*   **Fallback LLM:** `Qwen 2.5 7B` / `Llama 3.1 8B` (via Groq) — Backup chains to avoid API rate limits.
 
 ---
 
@@ -146,4 +147,4 @@ Start the FastAPI server:
 ```bash
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-Open **[http://127.0.0.1:8000](http://127.0.0.1:8000)** in your web browser.
+Open **127.0.0.1:8000** or **localhost:8000** in your web browser.
