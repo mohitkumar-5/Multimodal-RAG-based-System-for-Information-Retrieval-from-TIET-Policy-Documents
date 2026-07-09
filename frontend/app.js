@@ -917,10 +917,7 @@ function appendBotBubble(rawText, feedbackId = null, audioBase64 = null) {
     row.innerHTML = `
         <div class="message-avatar">AI</div>
         <div class="message-content-wrapper" style="max-width:80%;">
-            <div class="message-bubble">
-                ${formattedHtml}
-                ${audioCardHtml}
-            </div>
+            <div class="message-bubble" id="bubble_content_${rowId}"></div>
             ${feedbackHtml}
         </div>
     `;
@@ -928,10 +925,19 @@ function appendBotBubble(rawText, feedbackId = null, audioBase64 = null) {
     container.appendChild(row);
     scrollToBottom();
     
-    if (audioBase64) {
-        setTimeout(() => {
-            window.toggleAudioPlayback(playerId, audioBase64);
-        }, 50);
+    const contentDiv = document.getElementById(`bubble_content_${rowId}`);
+    if (contentDiv) {
+        typeHtml(contentDiv, formattedHtml, 6, () => {
+            if (audioBase64) {
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = audioCardHtml;
+                contentDiv.appendChild(tempDiv.firstElementChild);
+                scrollToBottom();
+                setTimeout(() => {
+                    window.toggleAudioPlayback(playerId, audioBase64);
+                }, 50);
+            }
+        });
     }
 }
 
@@ -1095,4 +1101,42 @@ function compileTableHtml(rows) {
     tableHtml += "</tbody></table>";
     
     return tableHtml;
+}
+
+function typeHtml(element, htmlContent, speed, onComplete) {
+    let currentHtml = "";
+    let isTag = false;
+    let i = 0;
+    
+    function step() {
+        if (i >= htmlContent.length) {
+            if (onComplete) onComplete();
+            return;
+        }
+        
+        let char = htmlContent[i];
+        
+        if (char === '<') {
+            isTag = true;
+        }
+        
+        currentHtml += char;
+        
+        if (char === '>') {
+            isTag = false;
+        }
+        
+        element.innerHTML = currentHtml;
+        scrollToBottom();
+        
+        i++;
+        
+        if (isTag) {
+            step();
+        } else {
+            setTimeout(step, speed);
+        }
+    }
+    
+    step();
 }
