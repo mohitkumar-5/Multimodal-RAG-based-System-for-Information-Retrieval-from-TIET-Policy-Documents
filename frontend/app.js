@@ -1,7 +1,9 @@
 // ==========================================================================
 // CONFIGURATION & GLOBAL STATE
 // ==========================================================================
-let BACKEND_URL = localStorage.getItem("tiet_backend_url") || ""; 
+let BACKEND_URL = localStorage.getItem("tiet_backend_url") || "https://multimodal-rag-based-system-for-h51h.onrender.com"; 
+// Clean trailing slash if any
+BACKEND_URL = BACKEND_URL.replace(/\/$/, "");
 
 let sessionId = "";
 let mediaRecorder = null;
