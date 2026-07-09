@@ -1,9 +1,22 @@
 // ==========================================================================
 // CONFIGURATION & GLOBAL STATE
 // ==========================================================================
-let BACKEND_URL = localStorage.getItem("tiet_backend_url") || "https://multimodal-rag-based-system-for-h51h.onrender.com"; 
+let BACKEND_URL = localStorage.getItem("tiet_backend_url") || "";
+
+// If we are deployed on a public domain, do not use a localhost backend URL
+if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+    if (BACKEND_URL.includes("localhost") || BACKEND_URL.includes("127.0.0.1")) {
+        localStorage.removeItem("tiet_backend_url");
+        BACKEND_URL = "";
+    }
+    // Default to the render URL if it's hosted elsewhere (like Vercel)
+    if (!BACKEND_URL && window.location.hostname.includes("vercel.app")) {
+        BACKEND_URL = "https://multimodal-rag-based-system-for-h51h.onrender.com";
+    }
+}
+
 // Clean trailing slash if any
-BACKEND_URL = BACKEND_URL.replace(/\/$/, "");
+BACKEND_URL = BACKEND_URL ? BACKEND_URL.replace(/\/$/, "") : "";
 
 let sessionId = "";
 let mediaRecorder = null;
@@ -672,7 +685,7 @@ async function sendTextQuery(question) {
     } catch (err) {
         console.error(err);
         removeBotLoader(botRowId);
-        appendBotBubble("⚠️ Failed to reach the server. Please check your internet connection.");
+        appendBotBubble("⚠️ Failed to reach the server. If this is your first query in a while, the server might still be waking up (takes ~50s). Please wait a moment and try again.");
     }
 }
 
@@ -704,7 +717,7 @@ async function sendImageQuery(file, textPrompt) {
     } catch (err) {
         console.error(err);
         removeBotLoader(botRowId);
-        appendBotBubble("⚠️ Failed to submit image. Please try again.");
+        appendBotBubble("⚠️ Failed to submit image. If this is your first query in a while, the server might still be waking up (takes ~50s). Please wait a moment and try again.");
     }
 }
 
