@@ -16,8 +16,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # This prevents startup delays or container timeouts on deployment.
 RUN python -c "from langchain_huggingface import HuggingFaceEmbeddings; HuggingFaceEmbeddings(model_name='BAAI/bge-base-en-v1.5')"
 
-# Copy backend files
+# Copy backend and frontend files
 COPY app ./app
+COPY frontend ./frontend
 
 # Expose server port
 EXPOSE 8000
