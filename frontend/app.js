@@ -1292,7 +1292,7 @@ function showBackendConfigModal() {
                 cursor: pointer;
                 box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
             ">Connect</button>
-            \${currentUrl ? \`
+            ${currentUrl ? `
             <button id="clear-backend-url-btn" style="
                 padding: 10px;
                 background: rgba(255,255,255,0.05);
@@ -1302,7 +1302,7 @@ function showBackendConfigModal() {
                 font-size: 13px;
                 cursor: pointer;
             ">Reset</button>
-            \` : ''}
+            ` : ''}
         </div>
     `;
     
@@ -1311,7 +1311,7 @@ function showBackendConfigModal() {
     document.getElementById("save-backend-url-btn").addEventListener("click", () => {
         let urlInput = document.getElementById("backend-url-input").value.trim();
         if (urlInput) {
-            urlInput = urlInput.replace(/\\/$/, "");
+            urlInput = urlInput.replace(/\/$/, "");
             localStorage.setItem("tiet_backend_url", urlInput);
             location.reload();
         }
