@@ -81,28 +81,41 @@ class HuggingFaceAPIEmbeddings(Embeddings):
         self.api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{model_name}"
         self.headers = {"Authorization": f"Bearer {token}"} if token else {}
 
+    def _call_api(self, inputs):
+        for attempt in range(5):
+            try:
+                response = requests.post(self.api_url, headers=self.headers, json={"inputs": inputs}, timeout=15)
+                if response.status_code == 200:
+                    return response.json()
+                elif response.status_code == 503:
+                    try:
+                        err_data = response.json()
+                        estimated_time = err_data.get("estimated_time", 5)
+                    except Exception:
+                        estimated_time = 5
+                    wait_time = min(estimated_time, 5)
+                    print(f"[RAG] HF Model is loading. Waiting {wait_time}s (Attempt {attempt+1}/5)...")
+                    time.sleep(wait_time)
+                else:
+                    print(f"[RAG] HF API Error status {response.status_code}: {response.text}")
+                    break
+            except Exception as e:
+                print(f"[RAG] HF API connection error: {e}")
+                time.sleep(2)
+        return None
+
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        try:
-            response = requests.post(self.api_url, headers=self.headers, json={"inputs": texts}, timeout=15)
-            if response.status_code != 200:
-                print(f"[RAG] HF API Error: {response.text}")
-                return [[0.0] * 768 for _ in texts]
-            return response.json()
-        except Exception as e:
-            print(f"[RAG] HF API Embedding exception: {e}")
-            return [[0.0] * 768 for _ in texts]
+        res = self._call_api(texts)
+        if res is not None:
+            return res
+        return [[0.0] * 768 for _ in texts]
 
     def embed_query(self, text: str) -> List[float]:
         prefixed = "Represent this sentence for searching relevant passages: " + text
-        try:
-            response = requests.post(self.api_url, headers=self.headers, json={"inputs": [prefixed]}, timeout=15)
-            if response.status_code != 200:
-                print(f"[RAG] HF API Error: {response.text}")
-                return [0.0] * 768
-            return response.json()[0]
-        except Exception as e:
-            print(f"[RAG] HF API Embedding query exception: {e}")
-            return [0.0] * 768
+        res = self._call_api([prefixed])
+        if res is not None:
+            return res[0]
+        return [0.0] * 768
 
 print("[RAG] Initializing Serverless Hugging Face API Embeddings...")
 embedding_model = HuggingFaceAPIEmbeddings(
