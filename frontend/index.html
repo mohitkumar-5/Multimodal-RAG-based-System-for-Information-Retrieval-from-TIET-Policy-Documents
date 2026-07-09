@@ -241,6 +241,10 @@
                         <span class="session-label">Session ID:</span>
                         <span class="session-value" id="session-id-display">Generating...</span>
                     </div>
+                    <div class="header-api-status" id="api-status-wrapper" title="Click to configure Backend URL" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                        <span class="api-status-dot" id="conn-indicator-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px #ef4444; transition: all 0.3s;"></span>
+                        <span class="api-status-text" id="conn-indicator-text" style="font-size: 11px; font-weight: 600; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.5px;">API Offline</span>
+                    </div>
                     <button class="new-session-btn" id="reset-session-btn">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73"/></svg>
                         Reset Thread

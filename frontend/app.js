@@ -1,7 +1,7 @@
 // ==========================================================================
 // CONFIGURATION & GLOBAL STATE
 // ==========================================================================
-const BACKEND_URL = ""; 
+let BACKEND_URL = localStorage.getItem("tiet_backend_url") || ""; 
 
 let sessionId = "";
 let mediaRecorder = null;
@@ -466,6 +466,11 @@ function setupEventListeners() {
     if (voiceBtn) {
         voiceBtn.addEventListener("click", toggleVoiceRecording);
     }
+
+    const apiStatusBtn = document.getElementById("api-status-wrapper");
+    if (apiStatusBtn) {
+        apiStatusBtn.addEventListener("click", showBackendConfigModal);
+    }
 }
 
 // ==========================================================================
@@ -486,16 +491,30 @@ window.setQuery = function(text) {
 // ==========================================================================
 async function checkApiStatus() {
     const text = document.getElementById("conn-indicator-text");
+    const dot = document.getElementById("conn-indicator-dot");
     try {
         const response = await fetch(getApiUrl("/api/health"));
-        if (response.ok && text) {
-            text.innerText = "API Online";
+        if (response.ok) {
+            if (text) text.innerText = "API Online";
+            if (dot) {
+                dot.style.background = "#10b981";
+                dot.style.boxShadow = "0 0 8px #10b981";
+            }
         } else {
             throw new Error();
         }
     } catch {
-        if (text) {
-            text.innerText = "API Offline";
+        if (text) text.innerText = "API Offline";
+        if (dot) {
+            dot.style.background = "#ef4444";
+            dot.style.boxShadow = "0 0 8px #ef4444";
+        }
+        
+        if (!localStorage.getItem("tiet_backend_url") && 
+            window.location.hostname !== "localhost" && 
+            window.location.hostname !== "127.0.0.1" && 
+            !window.location.hostname.includes("onrender.com")) {
+            showBackendConfigModal();
         }
     }
 }
@@ -1201,3 +1220,106 @@ window.stopGeneration = function() {
     }
     hideStopButton();
 };
+
+function showBackendConfigModal() {
+    if (document.getElementById("backend-config-modal")) return;
+    
+    const modal = document.createElement("div");
+    modal.id = "backend-config-modal";
+    modal.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: rgba(10, 10, 22, 0.95);
+        border: 1.5px solid rgba(168, 85, 247, 0.4);
+        border-radius: 20px;
+        padding: 24px;
+        z-index: 99999;
+        width: 340px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 15px rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        color: #ffffff;
+        font-family: inherit;
+        animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    `;
+    
+    if (!document.getElementById("modal-animation-styles")) {
+        const style = document.createElement("style");
+        style.id = "modal-animation-styles";
+        style.innerHTML = `
+            @keyframes modalSlideUp {
+                from { transform: translateY(30px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    const currentUrl = localStorage.getItem("tiet_backend_url") || "";
+    
+    modal.innerHTML = `
+        <h4 style="margin-top:0; margin-bottom:8px; font-size:16px; font-weight:600; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Link Backend API</h4>
+        <p style="font-size:12px; color:rgba(255,255,255,0.6); margin-bottom:16px; line-height:1.4;">
+            The frontend is disconnected. Please enter your Render backend API URL (e.g. <code>https://policylens.onrender.com</code>).
+        </p>
+        <input type="text" id="backend-url-input" placeholder="https://policylens.onrender.com" value="${currentUrl}" style="
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 14px;
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        " onfocus="this.style.borderColor='rgba(168, 85, 247, 0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+        
+        <div style="display:flex; gap:10px;">
+            <button id="save-backend-url-btn" style="
+                flex: 1;
+                padding: 10px;
+                background: linear-gradient(135deg, var(--accent-purple), var(--accent-magenta));
+                border: none;
+                border-radius: 10px;
+                color: #ffffff;
+                font-weight: 600;
+                font-size: 13px;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+            ">Connect</button>
+            \${currentUrl ? \`
+            <button id="clear-backend-url-btn" style="
+                padding: 10px;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 10px;
+                color: #ffffff;
+                font-size: 13px;
+                cursor: pointer;
+            ">Reset</button>
+            \` : ''}
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    document.getElementById("save-backend-url-btn").addEventListener("click", () => {
+        let urlInput = document.getElementById("backend-url-input").value.trim();
+        if (urlInput) {
+            urlInput = urlInput.replace(/\\/$/, "");
+            localStorage.setItem("tiet_backend_url", urlInput);
+            location.reload();
+        }
+    });
+    
+    const clearBtn = document.getElementById("clear-backend-url-btn");
+    if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+            localStorage.removeItem("tiet_backend_url");
+            location.reload();
+        });
+    }
+}
