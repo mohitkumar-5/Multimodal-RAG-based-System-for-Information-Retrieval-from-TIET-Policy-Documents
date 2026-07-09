@@ -240,8 +240,8 @@ function initFluidBackground() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 1. Mesh setup: Sphere geometry + custom shader material
-    const geometry = new THREE.IcosahedronGeometry(1.6, 64);
+    // 1. Mesh setup: Sphere geometry + custom shader material (detail reduced to 5 for high performance)
+    const geometry = new THREE.IcosahedronGeometry(1.6, 5);
     
     material = new THREE.ShaderMaterial({
         vertexShader: vertexShader,
