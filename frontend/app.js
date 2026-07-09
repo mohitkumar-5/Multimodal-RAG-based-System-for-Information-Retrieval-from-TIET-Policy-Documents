@@ -443,6 +443,11 @@ function setupEventListeners() {
         sendBtn.addEventListener("click", submitMessage);
     }
 
+    const stopBtn = document.getElementById("stop-generation-btn");
+    if (stopBtn) {
+        stopBtn.addEventListener("click", window.stopGeneration);
+    }
+
     const fileInput = document.getElementById("image-file-input");
     const uploadBtn = document.getElementById("image-upload-btn");
     const removeImgBtn = document.getElementById("remove-image-preview-btn");
@@ -937,7 +942,9 @@ function appendBotBubble(rawText, feedbackId = null, audioBase64 = null) {
     
     const contentDiv = document.getElementById(`bubble_content_${rowId}`);
     if (contentDiv) {
+        showStopButton();
         typeHtml(contentDiv, formattedHtml, 6, () => {
+            hideStopButton();
             if (audioBase64) {
                 const tempDiv = document.createElement("div");
                 tempDiv.innerHTML = audioCardHtml;
@@ -1113,13 +1120,32 @@ function compileTableHtml(rows) {
     return tableHtml;
 }
 
+let activeTypewriter = null;
+
 function typeHtml(element, htmlContent, speed, onComplete) {
     let currentHtml = "";
     let isTag = false;
     let i = 0;
+    let cancelled = false;
+
+    if (activeTypewriter) {
+        activeTypewriter.cancel();
+    }
+
+    activeTypewriter = {
+        cancel: () => {
+            cancelled = true;
+        }
+    };
     
     function step() {
+        if (cancelled) {
+            activeTypewriter = null;
+            if (onComplete) onComplete();
+            return;
+        }
         if (i >= htmlContent.length) {
+            activeTypewriter = null;
             if (onComplete) onComplete();
             return;
         }
@@ -1150,3 +1176,28 @@ function typeHtml(element, htmlContent, speed, onComplete) {
     
     step();
 }
+
+function showStopButton() {
+    const sendBtn = document.getElementById("send-message-btn");
+    const stopBtn = document.getElementById("stop-generation-btn");
+    if (sendBtn && stopBtn) {
+        sendBtn.style.display = "none";
+        stopBtn.style.display = "flex";
+    }
+}
+
+function hideStopButton() {
+    const sendBtn = document.getElementById("send-message-btn");
+    const stopBtn = document.getElementById("stop-generation-btn");
+    if (sendBtn && stopBtn) {
+        sendBtn.style.display = "flex";
+        stopBtn.style.display = "none";
+    }
+}
+
+window.stopGeneration = function() {
+    if (activeTypewriter) {
+        activeTypewriter.cancel();
+    }
+    hideStopButton();
+};

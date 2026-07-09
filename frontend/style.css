@@ -1361,3 +1361,20 @@ html, body {
 .about-container > :nth-child(1) { transition-delay: 0.05s; }
 .about-container > :nth-child(2) { transition-delay: 0.15s; }
 
+/* Stop Generation Button Styling */
+.stop-generation-btn {
+    background: rgba(239, 68, 68, 0.12) !important;
+    border: 1.5px solid rgba(239, 68, 68, 0.3) !important;
+    color: #ef4444 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.stop-generation-btn:hover {
+    background: rgba(239, 68, 68, 0.25) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+}
+
