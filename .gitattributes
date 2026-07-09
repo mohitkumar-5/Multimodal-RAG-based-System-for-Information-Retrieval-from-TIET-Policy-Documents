@@ -1,0 +1,7 @@
+# Mark frontend files as vendored so they don't appear in language stats
+# This makes GitHub show Python and Jupyter Notebook prominently
+frontend/app.js linguist-vendored
+frontend/style.css linguist-vendored
+frontend/index.html linguist-vendored
+frontend/vercel.json linguist-vendored
+Dockerfile linguist-vendored
