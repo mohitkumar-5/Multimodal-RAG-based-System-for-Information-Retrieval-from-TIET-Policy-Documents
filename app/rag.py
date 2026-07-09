@@ -6,12 +6,13 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 import time
 import base64
 import numpy as np
-import torch
+import requests
+from typing import List
 from dotenv import load_dotenv
 
 # LangChain and Groq imports
 from langchain_groq import ChatGroq
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_core.embeddings import Embeddings
 from langchain_qdrant import QdrantVectorStore
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
@@ -69,13 +70,44 @@ print(f"[RAG] Hugging Face Serverless API reachability status: {HF_AVAILABLE}")
 # --------------------------------------------------
 # INITIALIZATION
 # --------------------------------------------------
-# Embedding Model setup (BAAI/bge-base-en-v1.5)
-device = "cuda" if torch.cuda.is_available() else "cpu"
-print(f"[RAG] Using device for HuggingFaceEmbeddings: {device}")
-embedding_model = HuggingFaceEmbeddings(
+# 2. Fallback HuggingFace Setup & Token Load
+hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+
+# Custom API-based Embeddings to avoid loading PyTorch / BGE locally (saving 1.5GB RAM)
+class HuggingFaceAPIEmbeddings(Embeddings):
+    def __init__(self, model_name: str, token: str | None = None):
+        self.model_name = model_name
+        self.token = token
+        self.api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{model_name}"
+        self.headers = {"Authorization": f"Bearer {token}"} if token else {}
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        try:
+            response = requests.post(self.api_url, headers=self.headers, json={"inputs": texts}, timeout=15)
+            if response.status_code != 200:
+                print(f"[RAG] HF API Error: {response.text}")
+                return [[0.0] * 768 for _ in texts]
+            return response.json()
+        except Exception as e:
+            print(f"[RAG] HF API Embedding exception: {e}")
+            return [[0.0] * 768 for _ in texts]
+
+    def embed_query(self, text: str) -> List[float]:
+        prefixed = "Represent this sentence for searching relevant passages: " + text
+        try:
+            response = requests.post(self.api_url, headers=self.headers, json={"inputs": [prefixed]}, timeout=15)
+            if response.status_code != 200:
+                print(f"[RAG] HF API Error: {response.text}")
+                return [0.0] * 768
+            return response.json()[0]
+        except Exception as e:
+            print(f"[RAG] HF API Embedding query exception: {e}")
+            return [0.0] * 768
+
+print("[RAG] Initializing Serverless Hugging Face API Embeddings...")
+embedding_model = HuggingFaceAPIEmbeddings(
     model_name="BAAI/bge-base-en-v1.5",
-    model_kwargs={"device": device},
-    encode_kwargs={"normalize_embeddings": True},
+    token=hf_token
 )
 
 # Qdrant Vector Store
@@ -98,7 +130,6 @@ groq_llm = ChatGroq(
 )
 
 # 2. Fallback HuggingFace Setup
-hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # 3. Combined Runnable Router with Fallback (Triple Fail-Safe Router)
 class ModelRouter:

@@ -54,7 +54,7 @@ Before users can query the system, the document library is indexed using a struc
 *   **TIET Policy Documents (PDFs):** Official prospectuses, fee sheets, and circulars are placed in the ingestion queue.
 *   **Text & Table Extraction:** A parser extracts structured text, tabular data, and images from the documents.
 *   **Semantic Chunking:** The extracted content is broken down into small, semantically meaningful text blocks (chunks) with overlap to preserve context across boundaries.
-*   **Embedding Generation:** Each text chunk is converted into a 768-dimension vector embedding using the Hugging Face `bge-base-en-v1.5` Sentence Transformer.
+*   **Embedding Generation:** Each text chunk is converted into a 768-dimension vector embedding using the Hugging Face Serverless Inference API (`bge-base-en-v1.5` model).
 *   **Vector Storage:** The generated vector embeddings, along with original text and file metadata (filename, page numbers), are stored in the Qdrant Cloud vector database.
 
 ### 2. Online Query Retrieval & Generation Pipeline (Real-Time Execution)
@@ -63,7 +63,7 @@ When a user interacts with the application:
 2.  **Input Processing:** The FastAPI Backend receives the request:
     *   *Voice recordings* are transcribed to text using Groq's Whisper Large v3 (STT) model.
     *   *Images* are parsed and analyzed using Groq's Llama 4 Scout Vision model to extract questions or tabular data.
-3.  **Embedding Generation:** The resulting search text query is converted into a vector representation using the same Sentence Transformer.
+3.  **Embedding Generation:** The resulting search text query is converted into a vector representation using the same serverless Inference API.
 4.  **Vector Search:** The query vector is matched against the Qdrant Cloud database. The system retrieves the top relevant document chunks using MMR (Maximum Marginal Relevance) to ensure relevance and diversity of information.
 5.  **Context & Prompt Assembly:** The backend retrieves the session's chat history from Upstash Redis and assembles a structured prompt containing the retrieved document chunks, historical conversation logs, and the active query.
 6.  **AI Response Generation:** The prompt is sent to the Groq LLM (Llama 3.3 70B), which generates a precise, point-wise answer grounded strictly in the retrieved official documents, complete with page citations.
@@ -102,7 +102,7 @@ PolicyLens/
 *   **Vision LLM:** `Llama 4 Scout 17B Instruct` (via Groq) — For document layout and image analysis.
 *   **Speech-to-Text (STT):** `Whisper Large v3` (via Groq) — For accurate voice transcriptions.
 *   **Text-to-Speech (TTS):** `gTTS` (Google Text-To-Speech) — For playing vocalized answers.
-*   **Semantic Embeddings:** `BAAI/bge-base-en-v1.5` — High-performance dense vector model.
+*   **Semantic Embeddings:** `BAAI/bge-base-en-v1.5` (via Hugging Face Serverless Inference API) — High-performance dense vector model.
 *   **Fallback LLM:** `Qwen 2.5 7B` / `Llama 3.1 8B` (via Groq) — Backup chains to avoid API rate limits.
 
 ---

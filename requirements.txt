@@ -7,9 +7,7 @@ pdfplumber
 langchain
 langchain-community
 langchain-text-splitters
-langchain-huggingface
 langchain-groq
-sentence-transformers
 qdrant-client
 langchain-qdrant
 pyspellchecker

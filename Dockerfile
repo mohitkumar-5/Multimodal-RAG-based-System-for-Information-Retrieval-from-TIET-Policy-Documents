@@ -12,9 +12,6 @@ WORKDIR /workspace
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pre-download the Hugging Face embedding model to cache it in the Docker layer.
-# This prevents startup delays or container timeouts on deployment.
-RUN python -c "from langchain_huggingface import HuggingFaceEmbeddings; HuggingFaceEmbeddings(model_name='BAAI/bge-base-en-v1.5')"
 
 # Copy backend and frontend files
 COPY app ./app
