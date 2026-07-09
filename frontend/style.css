@@ -79,7 +79,15 @@ html, body {
     height: 100vh;
     z-index: -2;
     pointer-events: none;
-    background: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #030308 100%);
+    background: radial-gradient(circle at 50% 50%, #0d0824 0%, #030308 100%);
+    background-size: 150% 150%;
+    animation: bgMovement 22s infinite alternate ease-in-out;
+}
+
+@keyframes bgMovement {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
 
 /* Glowing Grid Overlay */
@@ -103,10 +111,10 @@ html, body {
 .css-blob-bg {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(90px);
     z-index: -1;
-    opacity: 0.35;
-    animation: blobFloat 12s infinite alternate ease-in-out;
+    opacity: 0.38;
+    animation: blobFloat 25s infinite alternate ease-in-out;
     pointer-events: none;
 }
 
@@ -124,13 +132,14 @@ html, body {
     background: var(--accent-cyan);
     bottom: 5%;
     right: 5%;
-    animation-delay: -5s;
-    animation-duration: 15s;
+    animation-delay: -8s;
+    animation-duration: 32s;
 }
 
 @keyframes blobFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(5vw, 10vh) scale(1.2); }
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50% { transform: translate(6vw, 12vh) scale(1.18) rotate(180deg); }
+    100% { transform: translate(-3vw, -6vh) scale(0.92) rotate(360deg); }
 }
 
 .app-container {
@@ -869,8 +878,8 @@ html, body {
 .chat-main-layout {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 160px);
-    max-width: 900px;
+    height: calc(100vh - 130px);
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
     background: rgba(10, 10, 22, 0.45);

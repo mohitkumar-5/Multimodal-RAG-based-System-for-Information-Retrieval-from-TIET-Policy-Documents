@@ -21,9 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
     initLiveTerminalStream();
     initScrollAnimations();
     
+    // Onboarding welcome message
+    setTimeout(appendWelcomeMessage, 600);
+    
     // Auto-poll feedback summary every 30 seconds
     setInterval(fetchFeedbackSummary, 30000);
 });
+
+function appendWelcomeMessage() {
+    const container = document.getElementById("chat-messages-container");
+    if (!container || container.children.length > 0) return;
+    appendBotBubble("Hey! 👋 I'm PolicyLens, your TIET academic assistant. How can I help you today?");
+}
 
 // Helper to determine the API root dynamically
 function getApiUrl(endpoint) {
@@ -505,6 +514,7 @@ function resetSession() {
             chatInput.value = "";
         }
         fetchFeedbackSummary();
+        setTimeout(appendWelcomeMessage, 300);
     }
 }
 
