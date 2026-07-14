@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 REDIS_URL = os.getenv("REDIS_URL")
+if REDIS_URL:
+    REDIS_URL = REDIS_URL.strip().strip("'\"")
 redis_client = None
 
 # Connect to Upstash Redis if URL is provided

@@ -32,8 +32,14 @@ load_dotenv()
 # --------------------------------------------------
 # CONFIGURATION & KEY LOADS
 # --------------------------------------------------
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-REDIS_URL = os.getenv("REDIS_URL")
+def get_env_safe(key: str, default: str = "") -> str:
+    val = os.getenv(key, default)
+    if val:
+        return val.strip().strip("'\"")
+    return default
+
+GROQ_API_KEY = get_env_safe("GROQ_API_KEY")
+REDIS_URL = get_env_safe("REDIS_URL") or None
 
 # Global Redis connection validation
 redis_connection = None
@@ -47,15 +53,15 @@ if REDIS_URL:
         print(f"[RAG] Failed to validate Redis URL: {e}. Falling back to in‑memory history.")
         redis_connection = None
 
-QDRANT_URL = os.getenv("QDRANT_URL", "https://8d88d793-5447-4f29-b169-ebb8a17a1137.eu-west-1-0.aws.cloud.qdrant.io")
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
-COLLECTION_NAME = os.getenv("COLLECTION_NAME", "tiet_policy_docs")
+QDRANT_URL = get_env_safe("QDRANT_URL", "https://8d88d793-5447-4f29-b169-ebb8a17a1137.eu-west-1-0.aws.cloud.qdrant.io")
+QDRANT_API_KEY = get_env_safe("QDRANT_API_KEY")
+COLLECTION_NAME = get_env_safe("COLLECTION_NAME", "tiet_policy_docs")
 
 # Model configuration
-PRIMARY_TEXT_MODEL = os.getenv("PRIMARY_TEXT_MODEL", "openai/gpt-oss-120b")
-FALLBACK_TEXT_MODEL = os.getenv("FALLBACK_TEXT_MODEL", "qwen/qwen3-32b")
-PRIMARY_VISION_MODEL = os.getenv("PRIMARY_VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
-FALLBACK_VISION_MODEL = os.getenv("FALLBACK_VISION_MODEL", "qwen/qwen3.6-27b")
+PRIMARY_TEXT_MODEL = get_env_safe("PRIMARY_TEXT_MODEL", "openai/gpt-oss-120b")
+FALLBACK_TEXT_MODEL = get_env_safe("FALLBACK_TEXT_MODEL", "qwen/qwen3-32b")
+PRIMARY_VISION_MODEL = get_env_safe("PRIMARY_VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
+FALLBACK_VISION_MODEL = get_env_safe("FALLBACK_VISION_MODEL", "qwen/qwen3.6-27b")
 WHISPER_MODEL = "whisper-large-v3"
 
 TOP_K = 5
@@ -74,14 +80,14 @@ print(f"[RAG] Hugging Face Serverless API reachability status: {HF_AVAILABLE}")
 # --------------------------------------------------
 # EMBEDDINGS (Memory optimized via HF Serverless API)
 # --------------------------------------------------
-hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
+hf_token = get_env_safe("HF_TOKEN") or get_env_safe("HUGGINGFACEHUB_API_TOKEN") or None
 
 class HuggingFaceAPIEmbeddings(Embeddings):
     """Custom API-based embeddings wrapper to avoid loading PyTorch / BGE locally (saving 1.5GB RAM)."""
     def __init__(self, model_name: str, token: str | None = None):
         self.model_name = model_name
         self.token = token
-        self.api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{model_name}"
+        self.api_url = f"https://router.huggingface.co/hf-inference/models/{model_name}"
         self.headers = {"Authorization": f"Bearer {token}"} if token else {}
 
     def _call_api(self, inputs):
