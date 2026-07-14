@@ -46,7 +46,29 @@ document.addEventListener("DOMContentLoaded", () => {
 function appendWelcomeMessage() {
     const container = document.getElementById("chat-messages-container");
     if (!container || container.children.length > 0) return;
-    appendBotBubble("Hey! 👋 I'm PolicyLens, your TIET academic assistant. How can I help you today?");
+    
+    const welcomeRow = document.createElement("div");
+    welcomeRow.className = "message-row bot-row welcome-row-container";
+    welcomeRow.innerHTML = `
+        <div class="message-avatar">AI</div>
+        <div class="message-content-wrapper" style="max-width: 80%;">
+            <div class="welcome-intro-card">
+                <h3>Hey! I'm PolicyLens, your Thapar Institute academic assistant. 👋</h3>
+                <p>Ask me anything about:</p>
+                <ul>
+                    <li>Academic schemes & CGPA rules</li>
+                    <li>Fee structures & scholarships</li>
+                    <li>Examination patterns & attendance</li>
+                    <li>Course registration & deadlines</li>
+                </ul>
+                <p style="margin-top: 14px; margin-bottom: 0; font-size: 12.5px; color: var(--text-secondary);">
+                    You can also send an <strong>image</strong> or use your <strong>microphone</strong>. How can I help?
+                </p>
+            </div>
+        </div>
+    `;
+    container.appendChild(welcomeRow);
+    scrollToBottom();
 }
 
 // Helper to determine the API root dynamically
@@ -76,15 +98,32 @@ function initSession() {
 // ==========================================================================
 window.switchTab = function(tabId) {
     document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    document.querySelectorAll('.nav-pill').forEach(link => link.classList.remove('active'));
+    document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
     
     const targetView = document.getElementById(`view-${tabId}`);
     const targetLink = document.getElementById(`tab-${tabId}`);
+    const targetSidebar = document.getElementById(`sidebar-${tabId}`);
+    
     if (targetView) targetView.classList.add('active');
     if (targetLink) targetLink.classList.add('active');
+    if (targetSidebar) targetSidebar.classList.add('active');
     
     // Re-check elements visibility when switching pages
     setTimeout(initScrollAnimations, 100);
+};
+
+window.filterDocCards = function() {
+    const query = document.getElementById("docs-search-input").value.toLowerCase();
+    const cards = document.querySelectorAll(".category-card");
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
 };
 
 window.setQueryAndLaunch = function(text) {
@@ -132,7 +171,7 @@ let renderer, scene, camera, blobMesh, material;
 let particleSystem, particlePositions, particleData = [];
 const particleCount = 80;
 let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
-let clock = new THREE.Clock();
+let clock = typeof THREE !== 'undefined' ? new THREE.Clock() : null;
 
 // GLSL Vertex Shader: Displacement using 3D Simplex Noise for organic morphing
 const vertexShader = `
@@ -248,6 +287,7 @@ const fragmentShader = `
 `;
 
 function initFluidBackground() {
+    if (typeof THREE === 'undefined') return;
     const canvas = document.getElementById("fluid-canvas");
     if (!canvas) return;
 

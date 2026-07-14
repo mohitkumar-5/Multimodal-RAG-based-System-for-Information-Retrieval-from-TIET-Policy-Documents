@@ -15,9 +15,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Interactive Background Fluid Canvas (Jellyfish tail animation) -->
-    <canvas id="fluid-canvas"></canvas>
-    
     <!-- Grid Overlay Background -->
     <div class="grid-overlay"></div>
 
@@ -25,168 +22,187 @@
     <div class="css-blob-bg blob-magenta"></div>
     <div class="css-blob-bg blob-cyan"></div>
 
-    <!-- Premium Header Navigation -->
-    <nav class="nav-bar">
-        <div class="nav-content">
-            <div class="nav-logo" onclick="switchTab('home')">
-                <!-- SVG Logo representing PolicyLens (Neuro-network + Orb) -->
-                <svg viewBox="0 0 100 100" class="logo-svg">
-                    <circle cx="50" cy="50" r="30" class="logo-ring" />
-                    <circle cx="50" cy="50" r="10" class="logo-core" />
-                    <line x1="50" y1="20" x2="50" y2="35" class="logo-line" />
-                    <line x1="50" y1="65" x2="50" y2="80" class="logo-line" />
-                    <line x1="20" y1="50" x2="35" y2="50" class="logo-line" />
-                    <line x1="65" y1="50" x2="80" y2="50" class="logo-line" />
-                </svg>
-                <span class="logo-text">PolicyLens</span>
-            </div>
-            <div class="nav-links">
-                <button class="nav-link active" id="tab-home" onclick="switchTab('home')">Home</button>
-                <button class="nav-link" id="tab-docs" onclick="switchTab('docs')">Docs</button>
-                <button class="nav-link" id="tab-chat" onclick="switchTab('chat')">Chat Workspace</button>
-            </div>
-            <div class="nav-actions">
-                <button class="signin-btn" onclick="switchTab('chat')">Start Chatting ✨</button>
-            </div>
+    <!-- Left Sidebar Shortcut Bar -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <!-- SVG Logo representing PolicyLens -->
+            <svg viewBox="0 0 100 100" class="sidebar-logo-svg" onclick="switchTab('home')">
+                <circle cx="50" cy="50" r="30" class="logo-ring" />
+                <circle cx="50" cy="50" r="10" class="logo-core" />
+                <line x1="50" y1="20" x2="50" y2="35" class="logo-line" />
+                <line x1="50" y1="65" x2="50" y2="80" class="logo-line" />
+                <line x1="20" y1="50" x2="35" y2="50" class="logo-line" />
+                <line x1="65" y1="50" x2="80" y2="50" class="logo-line" />
+            </svg>
         </div>
-    </nav>
+        
+        <div class="sidebar-mid">
+            <!-- Sidebar Navigation Icons -->
+            <button class="sidebar-btn active" id="sidebar-home" onclick="switchTab('home')" title="Home">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </button>
+            <button class="sidebar-btn" id="sidebar-docs" onclick="switchTab('docs')" title="Documents">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </button>
+            <button class="sidebar-btn" id="sidebar-chat" onclick="switchTab('chat')" title="Chat Workspace">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="sidebar-btn" title="Toggle Theme" id="theme-toggle-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 18a6 6 0 1 0 0-12v12z"/></svg>
+            </button>
+        </div>
+        
+        <div class="sidebar-bottom">
+            <div class="profile-avatar">M</div>
+        </div>
+    </aside>
 
-    <div class="app-container">
+    <!-- Top Header Navigation -->
+    <header class="top-header">
+        <div class="header-logo" onclick="switchTab('home')">
+            <span class="logo-text">PolicyLens</span>
+        </div>
+        
+        <div class="header-nav-pills">
+            <button class="nav-pill active" id="tab-home" onclick="switchTab('home')">Home</button>
+            <button class="nav-pill" id="tab-docs" onclick="switchTab('docs')">Docs</button>
+            <button class="nav-pill" id="tab-chat" onclick="switchTab('chat')">Chat</button>
+        </div>
+        
+        <div class="header-actions">
+            <div class="api-status-wrapper" id="api-status-wrapper" title="Backend Connection Status">
+                <span class="api-status-dot" id="conn-indicator-dot"></span>
+                <span class="api-status-text" id="conn-indicator-text">API Offline</span>
+            </div>
+            <button class="chat-cta-btn" onclick="switchTab('chat')">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Start Chatting
+            </button>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="app-main-content">
 
         <!-- ==========================================================================
              PAGE 1: HOME LANDING PAGE
              ========================================================================== -->
         <section class="page-view active" id="view-home">
-            <div class="hero-grid-container">
-                <!-- Left Column: Hero copy details -->
-                <div class="hero-left-content">
-                    <div class="animated-title-wrapper">
-                        <div class="floating-orb orb-1"></div>
-                        <div class="floating-orb orb-2"></div>
-                        <h1 class="hero-title">
-                            Unlock Academic Intelligence<br>
-                            <span class="gradient-text animated-gradient">Powered by PolicyLens</span>
-                        </h1>
-                    </div>
-                    
-                    <p class="hero-subtitle">
-                        PolicyLens is a secure cognitive gateway indexing over <strong>100+ Thapar official documents</strong>. Built on a Retrieval Augmented Generation (RAG) architecture, it references tuition fee charts, PG/UG prospectus schedules, course catalogs, credit lists, and Hostel rules to answer academic queries with high accuracy.
-                    </p>
-
-                    <div class="hero-buttons">
-                        <button class="primary-btn" onclick="switchTab('chat')">Start Chatting ✨</button>
-                        <button class="secondary-btn" onclick="scrollToFeatures()">Explore Features ↓</button>
-                    </div>
+            <!-- Hero Wrapper -->
+            <div class="hero-section">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Thapar Institute Academic AI
                 </div>
-
-                <!-- Right Column: Interactive Live Platform Request Terminal (Tilantra layout) -->
-                <div class="hero-right-terminal">
-                    <!-- Hover Badge Left -->
-                    <div class="hover-badge uptime-badge">
-                        <span class="badge-percentage">99.2%</span>
-                        <span class="badge-label">Uptime this semester</span>
-                    </div>
-
-                    <!-- Main Terminal Panel -->
-                    <div class="live-terminal-card">
-                        <div class="terminal-header">
-                            <div class="header-title-row">
-                                <span class="pulse-dot"></span>
-                                <span class="terminal-title">POLICYLENS ENGINE</span>
-                                <span class="live-label">Live</span>
-                            </div>
-                            <span class="req-speed" id="req-speed-indicator">942 req/min</span>
-                        </div>
-
-                        <!-- Live Logs Table -->
-                        <div class="terminal-table-wrapper">
-                            <table class="terminal-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 25%">TYPE</th>
-                                        <th style="width: 45%">QUERY / EVENT</th>
-                                        <th style="width: 30%">OUTCOME</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="live-requests-tbody">
-                                    <!-- Populated dynamically via JS -->
-                                    <tr class="log-row">
-                                        <td><span class="type-pill pill-routed">Routed</span></td>
-                                        <td class="log-query">CS fee structure</td>
-                                        <td class="log-outcome outcome-success">saved $0.18 - 8ms</td>
-                                    </tr>
-                                    <tr class="log-row">
-                                        <td><span class="type-pill pill-caching">Cached</span></td>
-                                        <td class="log-query">Hostel room criteria</td>
-                                        <td class="log-outcome outcome-purple">matched Redis key</td>
-                                    </tr>
-                                    <tr class="log-row">
-                                        <td><span class="type-pill pill-retrieval">MMR</span></td>
-                                        <td class="log-query">ECE course syllabus</td>
-                                        <td class="log-outcome outcome-blue">retrieved 5 docs</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Hover Badge Right -->
-                    <div class="hover-badge leaks-badge">
-                        <span class="badge-count">0</span>
-                        <span class="badge-label">compliance leaks</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scroll Section 1: Features -->
-            <div class="scroll-section" id="features-section">
-                <div class="section-badge">Platform Overview</div>
-                <h2 class="section-title">The Cognitive Layer for Thapar University</h2>
-                <p class="section-subtitle">
-                    Fast, accurate, and completely aligned with Thapar Academic Guidelines.
+                
+                <h1 class="hero-title">
+                    Your Academic <span class="gradient-title">Policy Expert</span>, On Demand
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Ask anything about TIET academic regulations, fee structures, examination schemes, and course policies. Get precise answers sourced directly from official documents.
                 </p>
 
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="switchTab('chat')">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 6px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        Ask PolicyLens →
+                    </button>
+                    <button class="btn-secondary" onclick="switchTab('docs')">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        Browse Docs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <h3>500+</h3>
+                    <p>Policy Pages Indexed</p>
+                </div>
+                <div class="stat-card">
+                    <h3>&lt;10s</h3>
+                    <p>Response Time</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3</h3>
+                    <p>Input Modalities</p>
+                </div>
+                <div class="stat-card">
+                    <h3>24/7</h3>
+                    <p>Always Available</p>
+                </div>
+            </div>
+
+            <!-- Features Grid Section -->
+            <div class="home-features-section" id="features-section">
+                <h2 class="section-title">Built for Student Success</h2>
+                <p class="section-subtitle">Every feature designed around how students actually need policy information.</p>
+                
                 <div class="features-grid">
+                    <!-- Card 1 -->
                     <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">🔍</div>
-                        <h4>100+ Corpus Documents</h4>
-                        <p>Fully indexing the complete Thapar course catalog, hostel circulars, tuition schedules, admission criteria, and academic handbooks.</p>
+                        <div class="feature-icon-box f-purple">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-4.12 2.5 2.5 0 0 1 0-4.12 2.5 2.5 0 0 1 2.46-3.92z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-4.12 2.5 2.5 0 0 0 0-4.12 2.5 2.5 0 0 0-2.46-3.92z"/></svg>
+                        </div>
+                        <h4>RAG-Powered Answers</h4>
+                        <p>Retrieval-Augmented Generation pulls exact clauses from official TIET documents — not hallucinations.</p>
                     </div>
+                    <!-- Card 2 -->
                     <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">🛡️</div>
-                        <h4>Absolute Privacy</h4>
-                        <p>Your session queries are cached locally or routed through secure Upstash connections. Zero data is shared for model training.</p>
+                        <div class="feature-icon-box f-blue">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        </div>
+                        <h4>Image Understanding</h4>
+                        <p>Upload screenshots of fee charts, timetables, or any policy document. Our vision model reads it instantly.</p>
                     </div>
+                    <!-- Card 3 -->
                     <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon">📉</div>
-                        <h4>Optimized MMR Vectors</h4>
-                        <p>Maximum Marginal Relevance search handles high-density text layouts, ensuring citations map to precise pages and lines.</p>
+                        <div class="feature-icon-box f-green">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v11M19 10v2a7 7 0 0 1-14 0v-2M12 23v-4"/><rect x="9" y="5" width="6" height="8" rx="3"/></svg>
+                        </div>
+                        <h4>Voice Queries</h4>
+                        <p>Ask your question out loud. Whisper-powered transcription turns speech to text in real-time.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon-box f-orange">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h4>Source-Verified</h4>
+                        <p>Every answer references the specific TIET policy document it was sourced from.</p>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon-box f-yellow">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h4>Instant Responses</h4>
+                        <p>Groq-powered LLM inference with sub-second token generation — no waiting.</p>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon-box f-pink">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <h4>Full Policy Library</h4>
+                        <p>Academic schemes, CGPA rules, registration deadlines, fee structures — all indexed and searchable.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Scroll Section 2: Detailed About & Privacy -->
-            <div class="scroll-section">
-                <div class="section-badge">Security & Scope</div>
-                <div class="about-container">
-                    <div class="about-card animate-on-scroll">
-                        <h4>Our Document Library</h4>
-                        <p>
-                            PolicyLens references an exhaustive set of <strong>100+ primary source documents</strong> from Thapar Institute of Engineering and Technology (TIET). This includes tuition fee circulars, PG/UG prospectus schedules, course catalogs, credit lists, and Hostel rules.
-                        </p>
-                        <p>
-                            Every response generated is explicitly cross-referenced. If information cannot be verified directly in the database, the system alerts you and cites its source files to prevent errors.
-                        </p>
+            <!-- Call to Action Banner -->
+            <div class="cta-banner-wrapper">
+                <div class="cta-banner-card">
+                    <div class="cta-icon-glow">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>
                     </div>
-                    <div class="about-card animate-on-scroll">
-                        <h4>Privacy Commitment</h4>
-                        <p>
-                            We prioritize your academic data security. Your conversation history is handled through clean Redis-capped namespaces and falls back to browser-localized memory sessions if needed.
-                        </p>
-                        <p>
-                            We use secure Serverless router pipelines to handle LLM fallbacks, ensuring that queries are processed directly and never stored by external APIs.
-                        </p>
-                    </div>
+                    <h2>Stop Searching. Start Asking.</h2>
+                    <p>The entire TIET policy handbook is indexed and ready. Get instant, cited answers to any academic question — no more digging through 200-page PDFs.</p>
+                    <button class="cta-action-btn" onclick="switchTab('chat')">
+                        Open Chat Workspace →
+                    </button>
                 </div>
             </div>
         </section>
@@ -195,37 +211,129 @@
              PAGE 2: POLICY DOCUMENTS EXPLORER
              ========================================================================== -->
         <section class="page-view" id="view-docs">
-            <div class="docs-explorer-container">
-                <div class="section-badge">Reference Repository</div>
-                <h2 class="section-title">Ingested Policy Library</h2>
-                <p class="section-subtitle">
-                    Select a document to immediately query its contents.
-                </p>
+            <div class="docs-page-wrapper">
+                <!-- Search Bar Container -->
+                <div class="docs-search-container">
+                    <div class="search-bar-inner">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="docs-search-input" placeholder="Search policies, topics, or keywords..." oninput="filterDocCards()">
+                    </div>
+                </div>
 
-                <div class="docs-grid">
-                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What is the tuition fee for the first semester of BE/BTech programs?')">
-                        <div class="doc-badge">PDF</div>
-                        <h4>05_TUITION_FEE_AND_OTHER_DUES.pdf</h4>
-                        <p>Details tuition rates, development charges, and enrollment dues across UG branches.</p>
-                        <span class="card-action">Query Document →</span>
+                <!-- Docs Category Grid -->
+                <div class="docs-category-grid" id="docs-category-grid">
+                    <!-- Category 1: Governance -->
+                    <div class="category-card" onclick="setQueryAndLaunch('What is the grading system, promotion criteria, and CGPA calculation rules in TIET?')">
+                        <div class="category-header">
+                            <div class="category-icon-wrapper f-purple">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div class="category-meta">
+                                <span class="meta-label">GOVERNANCE</span>
+                                <h4>Academic Regulations</h4>
+                            </div>
+                        </div>
+                        <p class="category-desc">Course credits, grading system, CGPA calculation rules, promotion criteria, and academic progression requirements.</p>
+                        <div class="category-tags">
+                            <span>CGPA</span>
+                            <span>Credits</span>
+                            <span>Promotion</span>
+                        </div>
                     </div>
-                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What are the eligibility criteria and seat reservation policies for UG admissions?')">
-                        <div class="doc-badge">PDF</div>
-                        <h4>06_ADMISSION_TO_FIRST_YEAR_UG_PROGRAM.pdf</h4>
-                        <p>Admissions handbook, JEE criteria, and core UG seat distribution matrix templates.</p>
-                        <span class="card-action">Query Document →</span>
+
+                    <!-- Category 2: Finance -->
+                    <div class="category-card" onclick="setQueryAndLaunch('What is the tuition fee structure, hostel charges, and scholarship criteria for BE/BTech?')">
+                        <div class="category-header">
+                            <div class="category-icon-wrapper f-green">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div class="category-meta">
+                                <span class="meta-label">FINANCE</span>
+                                <h4>Fee Structure</h4>
+                            </div>
+                        </div>
+                        <p class="category-desc">Semester fee breakdowns, hostel charges, late payment penalties, scholarship adjustments, and refund policies.</p>
+                        <div class="category-tags">
+                            <span>Tuition</span>
+                            <span>Hostel</span>
+                            <span>Scholarships</span>
+                        </div>
                     </div>
-                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What are the key placement statistics and eligibility rules for Thapar?')">
-                        <div class="doc-badge">PDF</div>
-                        <h4>Prospectus_TPC_2026-27.pdf</h4>
-                        <p>Thapar prospectus containing intake metrics, regulations, and placement summaries.</p>
-                        <span class="card-action">Query Document →</span>
+
+                    <!-- Category 3: Academics -->
+                    <div class="category-card" onclick="setQueryAndLaunch('What is the mid-term and end-term examination scheme, attendance requirements, and grading criteria?')">
+                        <div class="category-header">
+                            <div class="category-icon-wrapper f-blue">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div class="category-meta">
+                                <span class="meta-label">ACADEMICS</span>
+                                <h4>Examination Scheme</h4>
+                            </div>
+                        </div>
+                        <p class="category-desc">Mid-term and end-term exam patterns, attendance requirements, re-examination rules, and grade appeal process.</p>
+                        <div class="category-tags">
+                            <span>Exams</span>
+                            <span>Attendance</span>
+                            <span>Grades</span>
+                        </div>
                     </div>
-                    <div class="doc-card animate-on-scroll" onclick="setQueryAndLaunch('What are the minimum CGPA and credit requirements for the award of a BE/BTech degree?')">
-                        <div class="doc-badge">PDF</div>
-                        <h4>AcademicRegulations.pdf</h4>
-                        <p>Official academic codes, grading schemas, CGPA calculators, and degree limits.</p>
-                        <span class="card-action">Query Document →</span>
+
+                    <!-- Category 4: Graduation -->
+                    <div class="category-card" onclick="setQueryAndLaunch('What are the minimum credits, elective choices, and thesis rules required for graduation?')">
+                        <div class="category-header">
+                            <div class="category-icon-wrapper f-orange">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>
+                            </div>
+                            <div class="category-meta">
+                                <span class="meta-label">GRADUATION</span>
+                                <h4>Degree Requirements</h4>
+                            </div>
+                        </div>
+                        <p class="category-desc">Minimum credit requirements, elective course selections, project/thesis guidelines, and graduation eligibility.</p>
+                        <div class="category-tags">
+                            <span>Credits</span>
+                            <span>Thesis</span>
+                            <span>Electives</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 5: Administration -->
+                    <div class="category-card" onclick="setQueryAndLaunch('What are the registration rules, add/drop deadlines, and backlog handling procedures?')">
+                        <div class="category-header">
+                            <div class="category-icon-wrapper f-pink">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="category-meta">
+                                <span class="meta-label">ADMINISTRATION</span>
+                                <h4>Registration Rules</h4>
+                            </div>
+                        </div>
+                        <p class="category-desc">Course registration windows, add/drop deadlines, backlog handling, and semester freeze policies.</p>
+                        <div class="category-tags">
+                            <span>Registration</span>
+                            <span>Deadlines</span>
+                            <span>Backlog</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Discipline -->
+                    <div class="category-card" onclick="setQueryAndLaunch('What is the student code of conduct, plagiarism policy, and academic integrity regulations in TIET?')">
+                        <div class="category-header">
+                            <div class="category-icon-wrapper f-yellow">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                            </div>
+                            <div class="category-meta">
+                                <span class="meta-label">DISCIPLINE</span>
+                                <h4>Student Code of Conduct</h4>
+                            </div>
+                        </div>
+                        <p class="category-desc">Academic integrity rules, plagiarism policies, disciplinary procedures, and student rights and responsibilities.</p>
+                        <div class="category-tags">
+                            <span>Integrity</span>
+                            <span>Conduct</span>
+                            <span>Rights</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -236,25 +344,26 @@
              ========================================================================== -->
         <section class="page-view" id="view-chat">
             <div class="chat-main-layout">
-                <header class="chat-header-bar">
-                    <div class="header-session-info">
+                <!-- Chat Header Bar for Session and Reset controls -->
+                <header class="chat-header-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; border-bottom: 1px solid var(--border-premium); background-color: rgba(255, 255, 255, 0.01); border-radius: 16px 16px 0 0; margin-bottom: 12px;">
+                    <div class="header-session-info" style="font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
                         <span class="session-label">Session ID:</span>
-                        <span class="session-value" id="session-id-display">Generating...</span>
+                        <span class="session-value" id="session-id-display" style="font-family: var(--font-heading); font-weight: 700; color: var(--accent-purple); margin-left: 4px;">Generating...</span>
                     </div>
-                    <div class="header-api-status" id="api-status-wrapper" title="Click to configure Backend URL" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                        <span class="api-status-dot" id="conn-indicator-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px #ef4444; transition: all 0.3s;"></span>
-                        <span class="api-status-text" id="conn-indicator-text" style="font-size: 11px; font-weight: 600; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.5px;">API Offline</span>
-                    </div>
-                    <button class="new-session-btn" id="reset-session-btn">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73"/></svg>
+                    <button class="new-session-btn" id="reset-session-btn" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-premium); color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: var(--transition-smooth);">
+                        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73"/></svg>
                         Reset Thread
                     </button>
                 </header>
 
+                <!-- Chat Viewport containing messages -->
                 <div class="chat-viewport" id="chat-viewport">
-                    <div class="chat-messages-container" id="chat-messages-container"></div>
+                    <div class="chat-messages-container" id="chat-messages-container">
+                        <!-- Welcome message block will be appended here dynamically, or styled nicely -->
+                    </div>
                 </div>
 
+                <!-- Input Dock Container -->
                 <div class="prompt-dock-container">
                     <!-- Image Attachment Preview panel -->
                     <div class="image-preview-tray" id="image-preview-tray" style="display: none;">
@@ -271,27 +380,23 @@
                     <div class="floating-prompt-bar">
                         <input type="file" id="image-file-input" accept="image/*" style="display: none;">
                         
-                        <!-- Plus Button for attachments -->
-                        <button class="prompt-btn plus-btn" id="image-upload-btn" title="Attach file or screenshot" aria-label="Attach File">
+                        <!-- Attach image button -->
+                        <button class="prompt-btn attachment-btn" id="image-upload-btn" title="Attach screenshot" aria-label="Attach File">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            </button>
                         
                         <!-- Text Input -->
                         <div class="prompt-textarea-wrapper">
-                            <textarea class="prompt-textarea" id="chat-input" placeholder="Write a message..." rows="1" required></textarea>
+                            <textarea class="prompt-textarea" id="chat-input" placeholder="Ask anything about TIET policies..." rows="1" required></textarea>
                         </div>
                         
                         <!-- Actions Cluster on the right -->
                         <div class="prompt-actions-cluster">
-                            <!-- Model Selector Dropdown -->
-                            <div class="model-select-wrapper">
+                            <!-- Hidden Model Selector (retained to prevent JS errors in app.js, hidden via CSS) -->
+                            <div class="model-select-wrapper" style="display: none;">
                                 <select class="model-select" id="model-selector-dropdown">
-                                    <option value="groq-70b">Llama 3.3 70B</option>
-                                    <option value="qwen-2.5">Qwen 2.5 7B</option>
-                                    <option value="groq-8b">Llama 3.1 8B</option>
+                                    <option value="groq-70b">Default</option>
                                 </select>
                             </div>
                             
@@ -308,20 +413,24 @@
                             <button class="prompt-btn send-btn" id="send-message-btn" title="Send message" aria-label="Send message">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </button>
-
+ 
                             <!-- Stop Button -->
                             <button class="prompt-btn stop-generation-btn" id="stop-generation-btn" title="Stop generating" aria-label="Stop generating" style="display: none;">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 6h12v12H6z"/></svg>
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Footer Notice -->
+                    <div class="chat-footer-notice">
+                        PolicyLens can make mistakes. Verify important information with official TIET documents.
+                    </div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <!-- Script imports -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="app.js"></script>
 </body>
