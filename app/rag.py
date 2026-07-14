@@ -1,14 +1,14 @@
 import os
 import io
 import sys
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 import time
 import base64
-import numpy as np
-import requests
 from typing import List
 from dotenv import load_dotenv
+
+# Ensure utf-8 output streams
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # LangChain and Groq imports
 from langchain_groq import ChatGroq
@@ -16,8 +16,8 @@ from langchain_core.embeddings import Embeddings
 from langchain_qdrant import QdrantVectorStore
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnableLambda, RunnablePassthrough
-from langchain_core.messages import HumanMessage, AIMessage
+from langchain_core.runnables import RunnableLambda
+from langchain_core.messages import HumanMessage
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_community.chat_message_histories import RedisChatMessageHistory
 
@@ -25,6 +25,7 @@ from langchain_community.chat_message_histories import RedisChatMessageHistory
 from qdrant_client import QdrantClient
 from groq import Groq
 from gtts import gTTS
+import requests
 
 load_dotenv()
 
@@ -34,14 +35,13 @@ load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 REDIS_URL = os.getenv("REDIS_URL")
 
-# Global Redis connection (single client) – use URL directly for LangChain history
+# Global Redis connection validation
 redis_connection = None
 if REDIS_URL:
     try:
-        from langchain_community.chat_message_histories import RedisChatMessageHistory
         # Validate connection early
         test_history = RedisChatMessageHistory(session_id="test_conn", url=REDIS_URL, key_prefix="tiet_chat:")
-        redis_connection = REDIS_URL  # Store URL string for later use
+        redis_connection = REDIS_URL
         print("[RAG] Redis connection URL validated successfully.")
     except Exception as e:
         print(f"[RAG] Failed to validate Redis URL: {e}. Falling back to in‑memory history.")
@@ -51,12 +51,16 @@ QDRANT_URL = os.getenv("QDRANT_URL", "https://8d88d793-5447-4f29-b169-ebb8a17a11
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", "")
 COLLECTION_NAME = os.getenv("COLLECTION_NAME", "tiet_policy_docs")
 
-VISION_MODEL = os.getenv("VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
+# Model configuration
+PRIMARY_TEXT_MODEL = os.getenv("PRIMARY_TEXT_MODEL", "openai/gpt-oss-120b")
+FALLBACK_TEXT_MODEL = os.getenv("FALLBACK_TEXT_MODEL", "qwen/qwen3-32b")
+PRIMARY_VISION_MODEL = os.getenv("PRIMARY_VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct")
+FALLBACK_VISION_MODEL = os.getenv("FALLBACK_VISION_MODEL", "qwen/qwen3.6-27b")
 WHISPER_MODEL = "whisper-large-v3"
-TOP_K = 5
-RELEVANCE_THRESHOLD = 0.82
 
-# Check Hugging Face DNS reachability once at startup (prevents 12s hang on campus firewalls)
+TOP_K = 5
+
+# Check Hugging Face DNS reachability
 import socket
 def check_hf_dns():
     try:
@@ -68,13 +72,12 @@ HF_AVAILABLE = check_hf_dns()
 print(f"[RAG] Hugging Face Serverless API reachability status: {HF_AVAILABLE}")
 
 # --------------------------------------------------
-# INITIALIZATION
+# EMBEDDINGS (Memory optimized via HF Serverless API)
 # --------------------------------------------------
-# 2. Fallback HuggingFace Setup & Token Load
 hf_token = os.getenv("HF_TOKEN") or os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-# Custom API-based Embeddings to avoid loading PyTorch / BGE locally (saving 1.5GB RAM)
 class HuggingFaceAPIEmbeddings(Embeddings):
+    """Custom API-based embeddings wrapper to avoid loading PyTorch / BGE locally (saving 1.5GB RAM)."""
     def __init__(self, model_name: str, token: str | None = None):
         self.model_name = model_name
         self.token = token
@@ -87,17 +90,19 @@ class HuggingFaceAPIEmbeddings(Embeddings):
                 response = requests.post(self.api_url, headers=self.headers, json={"inputs": inputs}, timeout=15)
                 if response.status_code == 200:
                     return response.json()
-                elif response.status_code == 503:
-                    try:
-                        err_data = response.json()
-                        estimated_time = err_data.get("estimated_time", 5)
-                    except Exception:
-                        estimated_time = 5
-                    wait_time = min(estimated_time, 5)
-                    print(f"[RAG] HF Model is loading. Waiting {wait_time}s (Attempt {attempt+1}/5)...")
+                elif response.status_code in (503, 429, 500, 502, 504):
+                    # Exponential backoff for temporary errors and rate limits
+                    wait_time = 2 ** attempt
+                    if response.status_code == 503:
+                        try:
+                            estimated_time = response.json().get("estimated_time", 5)
+                            wait_time = min(estimated_time, 10)
+                        except Exception:
+                            pass
+                    print(f"[RAG] HF API transient status {response.status_code}. Waiting {wait_time}s (Attempt {attempt+1}/5)...")
                     time.sleep(wait_time)
                 else:
-                    print(f"[RAG] HF API Error status {response.status_code}: {response.text}")
+                    print(f"[RAG] HF API Permanent Error status {response.status_code}: {response.text}")
                     break
             except Exception as e:
                 print(f"[RAG] HF API connection error: {e}")
@@ -131,94 +136,67 @@ vector_store = QdrantVectorStore(
     embedding=embedding_model,
 )
 
-# Groq Client & Chat LLM
+# Groq Client
 groq_client = Groq(api_key=GROQ_API_KEY)
 
-# 1. Primary Groq LLM
-groq_llm = ChatGroq(
-    model="llama-3.3-70b-versatile",
-    temperature=0.1,
-    max_tokens=1024,
+# --------------------------------------------------
+# LLM ROUTING
+# --------------------------------------------------
+class ModelRouter:
+    """Encapsulates primary and fallback LLM routing with failover logic."""
+    def __init__(self, primary_model: str, fallback_model: str, api_key: str):
+        self.primary_model = primary_model
+        self.fallback_model = fallback_model
+        
+        self.primary_llm = ChatGroq(
+            model=primary_model,
+            temperature=0.1,
+            max_tokens=1024,
+            api_key=api_key
+        )
+        self.fallback_llm = ChatGroq(
+            model=fallback_model,
+            temperature=0.1,
+            max_tokens=1024,
+            api_key=api_key
+        )
+
+    def invoke(self, prompt):
+        try:
+            return self.primary_llm.invoke(prompt)
+        except Exception as e:
+            print(f"[RAG] Primary LLM ({self.primary_model}) failed: {e}. Falling back to ({self.fallback_model}).")
+            try:
+                return self.fallback_llm.invoke(prompt)
+            except Exception as fallback_err:
+                print(f"[RAG] Fallback LLM ({self.fallback_model}) failed: {fallback_err}")
+                raise fallback_err
+
+# Instantiate model router for text/reasoning tasks
+model_router = ModelRouter(
+    primary_model=PRIMARY_TEXT_MODEL,
+    fallback_model=FALLBACK_TEXT_MODEL,
     api_key=GROQ_API_KEY
 )
 
-# 2. Fallback HuggingFace Setup
-
-# 3. Combined Runnable Router with Fallback (Triple Fail-Safe Router)
-class ModelRouter:
-    """Encapsulates primary and fallback LLM routing with exponential back‑off."""
-    def __init__(self, primary_llm, hf_token: str | None, hf_available: bool):
-        self.primary = primary_llm
-        self.hf_token = hf_token
-        self.hf_available = hf_available
-        self.max_retries = 2
-
-    def _call_hf(self, prompt_str: str):
-        if not (self.hf_token and self.hf_available):
-            return None
-        hf_model = os.getenv("HF_MODEL", "Qwen/Qwen2.5-7B-Instruct")
-        url = "https://router.huggingface.co/v1/chat/completions"
-        headers = {"Authorization": f"Bearer {self.hf_token}", "Content-Type": "application/json"}
-        data = {"model": hf_model, "messages": [{"role": "user", "content": prompt_str}], "temperature": 0.1, "max_tokens": 1024}
-        try:
-            import requests
-            response = requests.post(url, headers=headers, json=data, timeout=30.0)
-            if response.status_code == 200:
-                answer = response.json()["choices"][0]["message"]["content"]
-                from langchain_core.messages import AIMessage
-                return AIMessage(content=answer)
-            else:
-                print(f"[RAG] HF fallback API error {response.status_code}: {response.text}")
-        except Exception as e:
-            print(f"[RAG] HF fallback error: {e}")
-        return None
-
-    def _call_groq_8b(self, prompt):
-        try:
-            groq_8b = ChatGroq(model="llama-3.1-8b-instant", temperature=0.1, max_tokens=1024, api_key=GROQ_API_KEY)
-            res = groq_8b.invoke(prompt)
-            print("[RAG] Groq 8B fallback succeeded.")
-            return res
-        except Exception as e:
-            print(f"[RAG] Groq 8B fallback failed: {e}")
-            return None
-
-    def invoke(self, prompt):
-        # Primary 70B
-        attempt = 0
-        while attempt <= self.max_retries:
-            try:
-                return self.primary.invoke(prompt)
-            except Exception as e:
-                print(f"[RAG] Primary 70B failed (attempt {attempt+1}): {e}")
-                # If rate‑limit or network, break to fallback
-                break
-        # HF fallback
-        prompt_str = prompt.to_string() if hasattr(prompt, "to_string") else str(prompt)
-        hf_res = self._call_hf(prompt_str)
-        if hf_res:
-            return hf_res
-        # Groq 8B fallback
-        groq_res = self._call_groq_8b(prompt)
-        if groq_res:
-            return groq_res
-        raise RuntimeError("All LLM backends failed.")
-
-# Instantiate router
-model_router = ModelRouter(primary_llm=groq_llm, hf_token=hf_token, hf_available=HF_AVAILABLE)
-
 llm = RunnableLambda(model_router.invoke)
 
-# Vision Model
-vision_llm = ChatGroq(
-    model=VISION_MODEL,
+# Primary & Fallback Vision Models
+primary_vision_llm = ChatGroq(
+    model=PRIMARY_VISION_MODEL,
+    temperature=0.1,
+    max_tokens=512,
+    api_key=GROQ_API_KEY
+)
+fallback_vision_llm = ChatGroq(
+    model=FALLBACK_VISION_MODEL,
     temperature=0.1,
     max_tokens=512,
     api_key=GROQ_API_KEY
 )
 
 # --------------------------------------------------
-# CHAT MEMORY PERSISTENT ROUTING (Redis / In-Memory)
+# CHAT MEMORY ROUTING (Redis / In-Memory)
 # --------------------------------------------------
 class InMemoryChatMessageHistory(BaseChatMessageHistory):
     """In‑memory fallback for chat session histories when Redis is unavailable."""
@@ -245,60 +223,22 @@ def get_chat_history(session_id: str) -> BaseChatMessageHistory:
         except Exception as e:
             print(f"[RAG] Redis history init failed: {e}. Falling back to in‑memory.")
 
-    # Fallback in‑memory history (singleton per session)
     if session_id not in in_memory_histories:
         in_memory_histories[session_id] = InMemoryChatMessageHistory()
     return in_memory_histories[session_id]
 
 # --------------------------------------------------
-# RETRIEVAL PIPELINE – simplified with MMR retriever and optional re‑ranking
+# RETRIEVAL PIPELINE (Memory Optimized)
 # --------------------------------------------------
 from langchain_core.documents import Document
 
-# Optional cross‑encoder reranker (downloaded lazily)
-def _load_cross_encoder():
-    try:
-        from sentence_transformers import CrossEncoder
-        return CrossEncoder("cross-encoder/ms-marco-MiniLM-L-12-v2")
-    except Exception as e:
-        print(f"[RAG] Cross‑encoder not available: {e}")
-        return None
-
-CROSS_ENCODER = _load_cross_encoder()
-
-def retrieve_documents(query: str, top_k: int = 10) -> list[Document]:
-    """Retrieve relevant documents using MMR and optional cross‑encoder re‑ranking.
-    Returns a list of Document objects ready for context formatting.
-    """
-    # Use MMR (Maximum Marginal Relevance) to increase diversity
+def retrieve_documents(query: str, top_k: int = TOP_K) -> list[Document]:
+    """Retrieve relevant documents using MMR. Uses 0MB local RAM."""
     retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": top_k, "lambda_mult": 0.5})
-    initial_docs = retriever.invoke(query)
-
-    # If a cross‑encoder is available, perform re‑ranking based on relevance to the query
-    if CROSS_ENCODER:
-        try:
-            pairs = [(query, doc.page_content) for doc in initial_docs]
-            scores = CROSS_ENCODER.predict(pairs)
-            # Sort docs by descending score
-            ranked = [doc for _, doc in sorted(zip(scores, initial_docs), key=lambda x: x[0], reverse=True)]
-            return ranked[:top_k]
-        except Exception as e:
-            print(f"[RAG] Re‑ranking failed: {e}")
-
-    return initial_docs[:top_k]
-
-# Helper to embed query with BGE prefix (kept for consistency)
-def embed_query_with_prefix(query: str):
-    prefixed = "Represent this sentence for searching relevant passages: " + query
-    return embedding_model.embed_query(prefixed)
-
-# Old stitching function retained for backward compatibility (disabled by default)
-def retrieve_with_stitching(query: str):
-    print("[RAG] retrieve_with_stitching is deprecated – using retrieve_documents instead.")
-    return retrieve_documents(query)
+    return retriever.invoke(query)
 
 def format_context(docs) -> str:
-    """Formats retrieved chunks with citations. Enforces a global token/character budget."""
+    """Formats retrieved chunks with citations. Enforces a global character budget."""
     blocks = []
     current_char_count = 0
     # Global context limit (shared across the app)
@@ -392,7 +332,7 @@ prompt = ChatPromptTemplate.from_messages([
 
 rag_chain = (
     {
-        "context": lambda x: format_context(retrieve_documents(x["question"])) ,
+        "context": lambda x: format_context(retrieve_documents(x["question"])),
         "question": lambda x: x["question"],
         "chat_history": lambda x: x["chat_history"],
     }
@@ -420,30 +360,14 @@ rewrite_chain = rewrite_prompt | llm | StrOutputParser()
 # --------------------------------------------------
 # CORE CONVERSATIONAL INTERFACES
 # --------------------------------------------------
-def cosine_similarity(vec1, vec2) -> float:
-    a, b = np.array(vec1), np.array(vec2)
-    return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
-
-def is_followup_question(new_question: str, prev_question: str) -> bool:
-    """Checks if new_question is topically related to prev_question via embedding similarity."""
-    try:
-        new_vec = embedding_model.embed_query(new_question)
-        prev_vec = embedding_model.embed_query(prev_question)
-        similarity = cosine_similarity(new_vec, prev_vec)
-        return similarity >= RELEVANCE_THRESHOLD
-    except Exception as e:
-        print(f"[RAG] Error checking follow-up: {e}")
-        return False
-
 def ask(question: str, session_id: str = "default") -> str:
     """
     Main entry point for asking a question with history/memory.
     - Connects to session history in Redis/in-memory.
-    - Rewrites query if related to previous turn.
+    - Rewrites query if related to previous turn using the LLM directly.
     - Feeds recent conversation turns directly to the prompt template.
     - Stores outcome in history.
     """
-    # Safe connection fallback: errors in Redis will not crash the QA route
     history = None
     messages = []
     try:
@@ -452,32 +376,38 @@ def ask(question: str, session_id: str = "default") -> str:
     except Exception as history_err:
         print(f"[Session {session_id}] History load error: {history_err}. Running without persistent memory.")
 
-    prev_human = None
-    prev_ai = None
-
-    # Retrieve last conversation turn (Human + AI)
-    for msg in reversed(messages):
-        if msg.type == "ai" and prev_ai is None:
-            prev_ai = msg.content
-        elif msg.type == "human" and prev_human is None and prev_ai is not None:
-            prev_human = msg.content
-            break
-
     final_question = question
 
-    if prev_human and prev_ai:
-        if is_followup_question(question, prev_human):
+    # If chat history exists, attempt to rewrite the query contextually
+    if messages:
+        prev_human = None
+        prev_ai = None
+        # Retrieve the last exchange (Human + AI)
+        for msg in reversed(messages):
+            if msg.type == "ai" and prev_ai is None:
+                prev_ai = msg.content
+            elif msg.type == "human" and prev_human is None and prev_ai is not None:
+                prev_human = msg.content
+                break
+
+        if prev_human and prev_ai:
             try:
-                final_question = rewrite_chain.invoke({
+                # LLM-based standalone rewriting: no expensive embeddings or threshold limits
+                rewritten = rewrite_chain.invoke({
                     "prev_question": prev_human,
                     "prev_answer": prev_ai,
                     "new_question": question,
-                })
-                print(f"[Session {session_id}] Linked to previous context. Rewritten: {final_question}")
+                }).strip()
+                
+                # Strip quotes if the LLM output is wrapped
+                if rewritten.startswith('"') and rewritten.endswith('"'):
+                    rewritten = rewritten[1:-1]
+                
+                if rewritten:
+                    final_question = rewritten
+                    print(f"[Session {session_id}] Standalone rewritten query: {final_question}")
             except Exception as e:
                 print(f"[Session {session_id}] Error in query rewriting: {e}")
-        else:
-            print(f"[Session {session_id}] New topic detected.")
 
     # Limit history memory in prompt to last 6 messages (3 turns) to keep context tokens small
     chat_history_messages = messages[-6:] if len(messages) > 6 else messages
@@ -508,7 +438,7 @@ def encode_image(image_bytes: bytes) -> str:
     return base64.b64encode(image_bytes).decode("utf-8")
 
 def extract_topic_from_image_bytes(image_bytes: bytes) -> str:
-    """Uses Groq Vision model to describe the topic or extract the question in the image."""
+    """Uses Groq Vision model to describe the topic or extract the question in the image with fallback."""
     base64_image = encode_image(image_bytes)
 
     message = HumanMessage(
@@ -531,8 +461,17 @@ def extract_topic_from_image_bytes(image_bytes: bytes) -> str:
         ]
     )
 
-    response = vision_llm.invoke([message])
-    return response.content.strip()
+    try:
+        response = primary_vision_llm.invoke([message])
+        return response.content.strip()
+    except Exception as e:
+        print(f"[RAG] Primary vision model ({PRIMARY_VISION_MODEL}) failed: {e}. Trying fallback...")
+        try:
+            response = fallback_vision_llm.invoke([message])
+            return response.content.strip()
+        except Exception as fallback_err:
+            print(f"[RAG] Fallback vision model ({FALLBACK_VISION_MODEL}) failed: {fallback_err}")
+            raise fallback_err
 
 def ask_with_image(image_bytes: bytes, session_id: str = "default") -> dict:
     """Extracts topic from image, runs RAG ask, returns question and answer."""

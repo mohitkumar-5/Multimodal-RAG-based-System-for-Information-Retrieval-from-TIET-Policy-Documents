@@ -1,16 +1,11 @@
-beautifulsoup4
 requests
-tqdm
-numpy
 python-dotenv
-pdfplumber
 langchain
 langchain-community
 langchain-text-splitters
 langchain-groq
 qdrant-client
 langchain-qdrant
-pyspellchecker
 fastapi
 uvicorn
 gunicorn
