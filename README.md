@@ -15,11 +15,7 @@
 
 ---
 
-## 🚀 Live Website
-*   **Link:** *[To be added later]*
 
-## 🎥 Project Demo Video
-*   **Video Link:** *[To be added later]*
 
 ---
 
