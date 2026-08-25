@@ -38,8 +38,9 @@ htmlcov/
 
 # Scratch & Logs
 scratch/
-output/
 rag_files_steps/
+.fastembed_cache/
+qdrant_db/
 *.log
 *.mp3
 *.png

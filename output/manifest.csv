@@ -1,0 +1,345 @@
+url,type,status,saved_path
+https://www.thapar.edu/admissions,html,text_extracted,output\html_text\admissions_deead266.txt
+https://www.thapar.edu/upload/files/Climate_Action_Plan.pdf,pdf,downloaded,output\pdfs\Climate_Action_Plan_a99e700c.pdf
+https://www.thapar.edu/upload/files/TIETService Regulations.pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/Specializations - TIET.pdf,pdf,downloaded,output\pdfs\Specializations_-_TIET_7af1ef0d.pdf
+https://www.thapar.edu/upload/files/TSLAS Compensation Strcuture 2020.pdf,pdf,downloaded,output\pdfs\TSLAS_Compensation_Strcuture_2020_e0995127.pdf
+https://www.thapar.edu/upload/files/Teaching - CED CSED EIED ECED MED Maths.pdf,pdf,downloaded,output\pdfs\Teaching_-_CED_CSED_EIED_ECED_MED_Maths_f8828aa8.pdf
+https://www.thapar.edu/upload/files/Research - LMTSM SHSS.pdf,pdf,downloaded,output\pdfs\Research_-_LMTSM_SHSS_8c9f5cfd.pdf
+https://www.thapar.edu/upload/files/GRC_26.pdf,pdf,downloaded,output\pdfs\GRC_26_80102d4f.pdf
+https://www.thapar.edu/upload/files/Teaching - LMTSM SHSS.pdf,pdf,downloaded,output\pdfs\Teaching_-_LMTSM_SHSS_63305214.pdf
+https://www.thapar.edu/upload/files/Industry - CED CSED EIED ECED MED Maths.pdf,pdf,downloaded,output\pdfs\Industry_-_CED_CSED_EIED_ECED_MED_Maths_aa6c961c.pdf
+https://www.thapar.edu/upload/files/Resaech - BTD SCBC SEE SPMS.pdf,pdf,downloaded,output\pdfs\Resaech_-_BTD_SCBC_SEE_SPMS_bb85aae1.pdf
+https://www.thapar.edu/upload/files/CEEMS INAUGURAL NEWSLETTER.pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/Accessibility Tools for Divyangjan.pdf,pdf,downloaded,output\pdfs\Accessibility_Tools_for_Divyangjan_a03aad01.pdf
+https://www.thapar.edu/upload/files/Faculty TIET & LMTSM Recruitment Policy.pdf,pdf,downloaded,output\pdfs\Faculty_TIET___LMTSM_Recruitment_Policy_34fb3f32.pdf
+https://www.thapar.edu/upload/files/Newsletter Vol V April 2026.pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/Industry - BTD SCBC SEE SPMS.pdf,pdf,downloaded,output\pdfs\Industry_-_BTD_SCBC_SEE_SPMS_96ce9d4d.pdf
+https://www.thapar.edu/upload/files/nationalraggingprevention.pdf,pdf,downloaded,output\pdfs\nationalraggingprevention_d7e9cea9.pdf
+https://www.thapar.edu/upload/files/Industry - LMTSM SHSS.pdf,pdf,downloaded,output\pdfs\Industry_-_LMTSM_SHSS_5c21249f.pdf
+https://www.thapar.edu/upload/files/ABET final statement_2.pdf,pdf,downloaded,output\pdfs\ABET_final_statement_2_a9da596b.pdf
+https://www.thapar.edu/upload/files/Teching - BTD SCBC SEE SPMS.pdf,pdf,downloaded,output\pdfs\Teching_-_BTD_SCBC_SEE_SPMS_ed598cae.pdf
+https://www.thapar.edu/upload/files/Ceems Newsletter III .pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/Privacy PolicyTIET.pdf,pdf,downloaded,output\pdfs\Privacy_PolicyTIET_5161daf9.pdf
+https://www.thapar.edu/upload/files/Research - CED CSED EIED ECED MED Maths.pdf,pdf,downloaded,output\pdfs\Research_-_CED_CSED_EIED_ECED_MED_Maths_6b3fa20f.pdf
+https://www.thapar.edu/upload/files/Holiday List.pdf,pdf,downloaded,output\pdfs\Holiday_List_993f484e.pdf
+https://www.thapar.edu/upload/files/CEEMS Summary2019-2024.pdf,pdf,downloaded,output\pdfs\CEEMS_Summary2019-2024_3759b388.pdf
+https://www.thapar.edu/upload/files/TIET-IPR Policy Ver.2 - Aug 2021.pdf,pdf,downloaded,output\pdfs\TIET-IPR_Policy_Ver.2_-_Aug_2021_0fece00b.pdf
+https://www.thapar.edu/upload/files/Ceems Newsletter II .pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/Newsletter Vol IV.pdf,pdf,skipped_too_large,
+https://www.thapar.edu/images/pdf/AcademicRegulations.pdf,pdf,downloaded,output\pdfs\AcademicRegulations_df5965c7.pdf
+https://admission.thapar.edu/,html,text_extracted,output\html_text\index_e415a88e.txt
+https://static.npfs.co/accounts/664/documents/2026/4/27/bc88d64fa6e940f0b15261aa42b0d9ca_Prospectus TPC 2026-27.pdf,pdf,downloaded,output\pdfs\bc88d64fa6e940f0b15261aa42b0d9ca_Prospectus_TPC_2026-27_e8aa2676.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/5277540ef8b1479c96f67acc7650a8de_01 ABBREVIATIONS USED.pdf,pdf,downloaded,output\pdfs\5277540ef8b1479c96f67acc7650a8de_01_ABBREVIATIONS_USED_66dfb845.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/13/a36f869348bd4ad885bc24ee76a010f3_Notice regarding the counselling for admission to BEBTech programme.pdf,pdf,downloaded,output\pdfs\a36f869348bd4ad885bc24ee76a010f3_Notice_regarding_the_counselling_for_admission_to_BEBTech_programme_7a29f9ad.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/791b83558d6c412cb807b90e502a30dd_22 BRIEF INFORMATION ABOUT B TECH BIOTECH PROGRAMME.pdf,pdf,downloaded,output\pdfs\791b83558d6c412cb807b90e502a30dd_22_BRIEF_INFORMATION_ABOUT_B_TECH_BIOTECH_PROGRAMME_948df051.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/268fd64d1efb4435a63df702d7e10cb9_19 BRIEF INFORMATION ABOUT BE (CIVIL ENGINEERING).pdf,pdf,downloaded,output\pdfs\268fd64d1efb4435a63df702d7e10cb9_19_BRIEF_INFORMATION_ABOUT_BE__CIVIL_ENGINEERING__60cc8502.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/e794c4c21cc64c05812018f50f868291_15 FEATURES OF UG-PG PROGRAMS.pdf,pdf,downloaded,output\pdfs\e794c4c21cc64c05812018f50f868291_15_FEATURES_OF_UG-PG_PROGRAMS_53575322.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/30/525f260cee2743f494097c32c123f3c0_29 FORMATS OF CERTIFICATES.pdf,pdf,downloaded,output\pdfs\525f260cee2743f494097c32c123f3c0_29_FORMATS_OF_CERTIFICATES_8ff97e41.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/12/3fe5e02ed4da43ada235fe0553d33453_WITHDRAWAL FORM DIPLOMA.pdf,pdf,downloaded,output\pdfs\3fe5e02ed4da43ada235fe0553d33453_WITHDRAWAL_FORM_DIPLOMA_c5a97525.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/26/8203afe8b4f145158f407199ce907efe_11 ADMISSION TO PHD PROGRAMS.pdf,pdf,downloaded,output\pdfs\8203afe8b4f145158f407199ce907efe_11_ADMISSION_TO_PHD_PROGRAMS_54e1156c.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/3106a6d3903c43ceb31dfee1cd64e6c5_09%20ADMISSION%20TO%20MCA%20PROGRAM.pdf,pdf,downloaded,output\pdfs\3106a6d3903c43ceb31dfee1cd64e6c5_09_20ADMISSION_20TO_20MCA_20PROGRAM_20421a75.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/18/84f92be4f9d74bb5a5e6656a5f6237b3_Admissions 2026-2027 Refund Policy.pdf,pdf,downloaded,output\pdfs\84f92be4f9d74bb5a5e6656a5f6237b3_Admissions_2026-2027_Refund_Policy_b2d57ffe.pdf
+https://static.npfs.co/accounts/664/documents/2026/3/21/10e8487afed645f0b6812b7159416fbd_Payment Mode Details.pdf,pdf,downloaded,output\pdfs\10e8487afed645f0b6812b7159416fbd_Payment_Mode_Details_7eb1ee7d.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/16/c604ce55cd2d47d1aadf6039679377c5_Cut off - First online counselling on the basis of JEE - 2026.pdf,pdf,downloaded,output\pdfs\c604ce55cd2d47d1aadf6039679377c5_Cut_off_-_First_online_counselling_on_the_basis_of_JEE_-_2026_6a10c3b5.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/31/24943a9fc0174c0691e3a7c98def5572_Diploma Counselling - I Schedule.pdf,pdf,downloaded,output\pdfs\24943a9fc0174c0691e3a7c98def5572_Diploma_Counselling_-_I_Schedule_02a9c095.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/21/9a49c582d46b439b8e96e493cb2b99d7_IEP Counselling - I.pdf,pdf,downloaded,output\pdfs\9a49c582d46b439b8e96e493cb2b99d7_IEP_Counselling_-_I_c37f03c5.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/1/190396079a034243b7aafab0f14d98e1_06 ADMISSION TO FIRST YEAR UG PROGRAM.pdf,pdf,downloaded,output\pdfs\190396079a034243b7aafab0f14d98e1_06_ADMISSION_TO_FIRST_YEAR_UG_PROGRAM_26c351e1.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/57f5952c44894e2b89bc4a4a9e3dced3_12 ADMISSION FOR FN-NRI CANDIDATES.pdf,pdf,downloaded,output\pdfs\57f5952c44894e2b89bc4a4a9e3dced3_12_ADMISSION_FOR_FN-NRI_CANDIDATES_29200a3d.pdf
+https://static.npfs.co/accounts/664/documents/2026/3/3/feaba839d7624dfe8f1b449600f9da0f_11%20ADMISSION%20TO%20PHD%20PROGRAMS.pdf,pdf,downloaded,output\pdfs\feaba839d7624dfe8f1b449600f9da0f_11_20ADMISSION_20TO_20PHD_20PROGRAMS_e6288251.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/c8706fe503eb4611b95ad51d4636cfe3_25 HOSTEL FACILITIES.pdf,pdf,downloaded,output\pdfs\c8706fe503eb4611b95ad51d4636cfe3_25_HOSTEL_FACILITIES_e2e9853b.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/58f5acf1f6cf4f2687c42519b66936af_20 BRIEF INFORMATION ABOUT CIVIL WITH COMPUTER APPLICATIONS ENGINEERING.pdf,pdf,downloaded,output\pdfs\58f5acf1f6cf4f2687c42519b66936af_20_BRIEF_INFORMATION_ABOUT_CIVIL_WITH_COMPUTER_APPLICATIONS_ENGINEERING_7edd69de.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/32ab1586afd1450c8d7a6f79fdbaa69f_24 PRIZES AND MEDALS.pdf,pdf,downloaded,output\pdfs\32ab1586afd1450c8d7a6f79fdbaa69f_24_PRIZES_AND_MEDALS_924bdbf9.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/83cbb8a55ce941d5b9f3656aa4fb2135_17 BRIEF INFORMATION ABOUT MCA 2 YEAR.pdf,pdf,downloaded,output\pdfs\83cbb8a55ce941d5b9f3656aa4fb2135_17_BRIEF_INFORMATION_ABOUT_MCA_2_YEAR_995bef0a.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/27/590dddcb7485402398934a268e815d5f_10 A ADMISSION TO MSc - PCM PROGRAM.pdf,pdf,downloaded,output\pdfs\590dddcb7485402398934a268e815d5f_10_A_ADMISSION_TO_MSc_-_PCM_PROGRAM_f28c71fe.pdf
+https://static.npfs.co/accounts/664/documents/2026/4/22/a4a1be84fa814cb281b1e2b6e4041da2_30 WITHDRAWAL FORM.pdf,pdf,downloaded,output\pdfs\a4a1be84fa814cb281b1e2b6e4041da2_30_WITHDRAWAL_FORM_091ec550.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/c0147151854341d483bdda71a79d4e24_16 BRIEF INFORMATION ABOUT BIOMEDICAL ENGINEERING.pdf,pdf,downloaded,output\pdfs\c0147151854341d483bdda71a79d4e24_16_BRIEF_INFORMATION_ABOUT_BIOMEDICAL_ENGINEERING_70278b1d.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/35e9cdca941541669de3af535d968abe_08%20ADMISSION%20TO%20ME-MTECH%20PROGRAMS.pdf,pdf,downloaded,output\pdfs\35e9cdca941541669de3af535d968abe_08_20ADMISSION_20TO_20ME-MTECH_20PROGRAMS_f4cfe9ce.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/8a49c18e9a4940a5b91c775c118dedd1_07 ADMISSION IN SECOND YEAR OF UG PROGRAM (LATERAL ENTRY).pdf,pdf,downloaded,output\pdfs\8a49c18e9a4940a5b91c775c118dedd1_07_ADMISSION_IN_SECOND_YEAR_OF_UG_PROGRAM__LATERAL_ENTRY__a6e788c8.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/23/92257689063b4636bedb3135a866da02_13 INTERNATIONAL ENGINEERING PROGRAM.pdf,pdf,downloaded,output\pdfs\92257689063b4636bedb3135a866da02_13_INTERNATIONAL_ENGINEERING_PROGRAM_b893c519.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/c9ca1c9ac6384c869ba793be62a01312_21 BRIEF INFORMATION ABOUT ELECTIVE FOCUS IN B.E. (CHEMICAL ENGINEERING).pdf,pdf,downloaded,output\pdfs\c9ca1c9ac6384c869ba793be62a01312_21_BRIEF_INFORMATION_ABOUT_ELECTIVE_FOCUS_IN_B.E.__CHEMICAL_ENGINEERING__48eeab8d.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/29/f2bfec51bcbb473b99876d6bcc5b56c7_Cut off - Second online counselling on the basis of JEE - 2026.pdf,pdf,downloaded,output\pdfs\f2bfec51bcbb473b99876d6bcc5b56c7_Cut_off_-_Second_online_counselling_on_the_basis_of_JEE_-_2026_1392ca6c.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/e43f918eb33a407794b5133b33009ee8_27 ANTI-ALCOHOL AND ANTI-DRUG  ABUSE POLICY.pdf,pdf,downloaded,output\pdfs\e43f918eb33a407794b5133b33009ee8_27_ANTI-ALCOHOL_AND_ANTI-DRUG__ABUSE_POLICY_902c0ad6.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/19/dc5f745ae85d4b548b2728da49dfad4f_Notice regarding the Second Round of counselling - BEBTech.pdf,pdf,downloaded,output\pdfs\dc5f745ae85d4b548b2728da49dfad4f_Notice_regarding_the_Second_Round_of_counselling_-_BEBTech_851e25e0.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/8a49c18e9a4940a5b91c775c118dedd1_07%20ADMISSION%20IN%20SECOND%20YEAR%20OF%20UG%20PROGRAM%20(LATERAL%20ENTRY).pdf,pdf,skipped_duplicate_content:88358037,
+https://static.npfs.co/accounts/664/documents/2026/1/24/182582839d6248b78040babe4ab7e3e7_23 NAVA NALANDA CENTRAL LIBRARY.pdf,pdf,downloaded,output\pdfs\182582839d6248b78040babe4ab7e3e7_23_NAVA_NALANDA_CENTRAL_LIBRARY_a8f7f8a7.pdf
+https://static.npfs.co/accounts/664/documents/2026/5/12/b9e33aa15d0348c1a9fb72877e2ab874_JEE Main - 2026 Missing-Incorrect Scorecard - 12052026.pdf,pdf,downloaded,output\pdfs\b9e33aa15d0348c1a9fb72877e2ab874_JEE_Main_-_2026_Missing-Incorrect_Scorecard_-_12052026_34fed81a.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/9c986e54063c4c82a23d721f2825649f_04 Fake agents_TIET.pdf,pdf,downloaded,output\pdfs\9c986e54063c4c82a23d721f2825649f_04_Fake_agents_TIET_d6dbc6e1.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/bf1c6b53a46440b39aae7784051e6d84_18 BRIEF INFORMATION ABOUT SPECIALISATION COURSES IN BE (COMPUTER ENGINEERING).pdf,pdf,downloaded,output\pdfs\bf1c6b53a46440b39aae7784051e6d84_18_BRIEF_INFORMATION_ABOUT_SPECIALISATION_COURSES_IN_BE__COMPUTER_ENGINEERING__b78eaac9.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/12/873add07e9fb4c51ad81e2e4760bfe98_Notice regarding Second round of counselling.pdf,pdf,downloaded,output\pdfs\873add07e9fb4c51ad81e2e4760bfe98_Notice_regarding_Second_round_of_counselling_e0c7ab44.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/e7405eddb07a445992e0485856751152_03 BRIEF INTRODUCTION.pdf,pdf,downloaded,output\pdfs\e7405eddb07a445992e0485856751152_03_BRIEF_INTRODUCTION_4912bae0.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/3106a6d3903c43ceb31dfee1cd64e6c5_09 ADMISSION TO MCA PROGRAM.pdf,pdf,skipped_duplicate_content:1fc72cf6,
+https://static.npfs.co/accounts/664/documents/2026/1/24/6f7b4a133f2243bdb7653762cf0ad9ad_02 PREFACE.pdf,pdf,downloaded,output\pdfs\6f7b4a133f2243bdb7653762cf0ad9ad_02_PREFACE_8fb32542.pdf
+https://static.npfs.co/accounts/664/documents/2026/3/20/9e19a5d83c884f50bd1ca2dfc3ad0cc7_05 TUITION FEE AND OTHER DUES.pdf,pdf,downloaded,output\pdfs\9e19a5d83c884f50bd1ca2dfc3ad0cc7_05_TUITION_FEE_AND_OTHER_DUES_a65ade5d.pdf
+https://static.npfs.co/accounts/664/documents/2026/3/23/413f2739fb0f4c80ab9e846c83906f92_14 SCHOLARSHIP POLICY.pdf,pdf,downloaded,output\pdfs\413f2739fb0f4c80ab9e846c83906f92_14_SCHOLARSHIP_POLICY_85b6d27a.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/35e9cdca941541669de3af535d968abe_08 ADMISSION TO ME-MTECH PROGRAMS.pdf,pdf,skipped_duplicate_content:e8bdfc42,
+https://static.npfs.co/accounts/664/documents/2026/3/30/72346df46e4649f08440dfd11f9a018c_10 ADMISSION TO MSC - BIOTECHNOLOGY PROGRAMME.pdf,pdf,downloaded,output\pdfs\72346df46e4649f08440dfd11f9a018c_10_ADMISSION_TO_MSC_-_BIOTECHNOLOGY_PROGRAMME_52fe1bc9.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/46c20e7c0de84cd68dbd1ecb952f34fc_26 DISCIPLINE.pdf,pdf,downloaded,output\pdfs\46c20e7c0de84cd68dbd1ecb952f34fc_26_DISCIPLINE_00746f73.pdf
+https://static.npfs.co/accounts/664/documents/2026/1/24/4d37110458134e2596d49a358bd97dd1_28 STUDENT ACTIVITIES.pdf,pdf,downloaded,output\pdfs\4d37110458134e2596d49a358bd97dd1_28_STUDENT_ACTIVITIES_2d7f7e24.pdf
+https://static.npfs.co/accounts/664/documents/2026/6/27/288fba1ba3c14f60a7108aa93868a969_Diploma Counselling - II Schedule.pdf,pdf,downloaded,output\pdfs\288fba1ba3c14f60a7108aa93868a969_Diploma_Counselling_-_II_Schedule_a1fa8968.pdf
+https://www.thapar.edu/students/pages/hostels,html,text_extracted,output\html_text\hostels_62074410.txt
+https://www.thapar.edu/programmes,html,text_extracted,output\html_text\programmes_005a4859.txt
+https://www.thapar.edu/students/pages/fee-circular-and-fee-chart,html,text_extracted,output\html_text\fee-circular-and-fee-chart_2e346ed3.txt
+https://www.thapar.edu/upload/files/ProjectRegistrationNotice.pdf,pdf,downloaded,output\pdfs\ProjectRegistrationNotice_33a836d8.pdf
+https://www.thapar.edu/upload/files/Fee Payment Circularoddsem2022.pdf,pdf,downloaded,output\pdfs\Fee_Payment_Circularoddsem2022_081c2ce2.pdf
+https://www.thapar.edu/upload/files/Extension of due date for payment of feeoddsem22-23.pdf,pdf,downloaded,output\pdfs\Extension_of_due_date_for_payment_of_feeoddsem22-23_06196773.pdf
+https://www.thapar.edu/upload/files/Fee Circular2022.pdf,pdf,downloaded,output\pdfs\Fee_Circular2022_f5836792.pdf
+https://www.thapar.edu/upload/files/Hostel Refund Policyupdated.pdf,pdf,downloaded,output\pdfs\Hostel_Refund_Policyupdated_c431d162.pdf
+https://www.thapar.edu/upload/files/ProjectSem.Regn2022-23EVENSEM.pdf,pdf,downloaded,output\pdfs\ProjectSem.Regn2022-23EVENSEM_d9d6450c.pdf
+https://www.thapar.edu/upload/files/Fee payment circular for 2021-22.pdf,pdf,downloaded,output\pdfs\Fee_payment_circular_for_2021-22_a98d4fdf.pdf
+https://www.thapar.edu/faculties,html,text_extracted,output\html_text\faculties_6dd6cbea.txt
+https://csed.thapar.edu/,html,text_extracted,output\html_text\index_b4d126b7.txt
+https://csed.thapar.edu/images/pdf/AcademicRegulations.pdf,pdf,skipped_duplicate_content:1d58d1ca,
+https://csed.thapar.edu/faculty,html,text_extracted,output\html_text\faculty_8e259932.txt
+https://csed.thapar.edu/programmes,html,text_extracted,output\html_text\programmes_9d06b25d.txt
+https://csed.thapar.edu/upload/files/BECOE23.pdf,pdf,downloaded,output\pdfs\BECOE23_a97fb883.pdf
+https://csed.thapar.edu/upload/files/BECOE_2024_Scheme.pdf,pdf,downloaded,output\pdfs\BECOE_2024_Scheme_2e3b73c7.pdf
+https://csed.thapar.edu/upload/files/MCA Scheme 2025.pdf,pdf,downloaded,output\pdfs\MCA_Scheme_2025_d4dc2378.pdf
+https://www.thapar.edu/upload/files/BECOE2021sep.pdf,pdf,downloaded,output\pdfs\BECOE2021sep_39126b90.pdf
+https://www.thapar.edu/upload/files/BECSE_2022.pdf,pdf,downloaded,output\pdfs\BECSE_2022_8422700f.pdf
+https://csed.thapar.edu/upload/files/BECOE_2025_Scheme.pdf,pdf,downloaded,output\pdfs\BECOE_2025_Scheme_66f19ecc.pdf
+https://www.thapar.edu/upload/files/BECSE2025_Scheme.pdf,pdf,downloaded,output\pdfs\BECSE2025_Scheme_3ccfb16f.pdf
+https://www.thapar.edu/upload/files/BECSE2024_Scheme.pdf,pdf,downloaded,output\pdfs\BECSE2024_Scheme_37d1ce93.pdf
+https://www.thapar.edu/upload/files/BE CSBS2022.pdf,pdf,downloaded,output\pdfs\BE_CSBS2022_a368fd15.pdf
+https://www.thapar.edu/upload/files/BECSE2021.pdf,pdf,downloaded,output\pdfs\BECSE2021_eda0a961.pdf
+https://csed.thapar.edu/upload/files/AI-DS_2024_COURSE SCHEME.pdf,pdf,downloaded,output\pdfs\AI-DS_2024_COURSE_SCHEME_25201f20.pdf
+https://www.thapar.edu/upload/files/BE CSBS 2020.pdf,pdf,downloaded,output\pdfs\BE_CSBS_2020_ee3209b5.pdf
+https://www.thapar.edu/upload/files/BE CSBS2023.pdf,pdf,downloaded,output\pdfs\BE_CSBS2023_38b61d51.pdf
+https://www.thapar.edu/upload/files/BECSE2019_SUGC.pdf,pdf,downloaded,output\pdfs\BECSE2019_SUGC_421a970a.pdf
+https://csed.thapar.edu/upload/files/ME CSE2021 FINAL.pdf,pdf,downloaded,output\pdfs\ME_CSE2021_FINAL_1804e7ec.pdf
+https://www.thapar.edu/upload/files/ME CSE Course Scheme 2022.pdf,pdf,downloaded,output\pdfs\ME_CSE_Course_Scheme_2022_e0104b02.pdf
+https://csed.thapar.edu/upload/files/MCA_Scheme_2022_23_csed.pdf,pdf,downloaded,output\pdfs\MCA_Scheme_2022_23_csed_28cdc4bc.pdf
+https://csed.thapar.edu/upload/files/NAAC_CSED.pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/Final-ME-CSE_Scheme-2020.pdf,pdf,downloaded,output\pdfs\Final-ME-CSE_Scheme-2020_1b08f3d6.pdf
+https://www.thapar.edu/upload/files/BECSE2020_SUGC.pdf,pdf,downloaded,output\pdfs\BECSE2020_SUGC_3f22942e.pdf
+https://www.thapar.edu/upload/files/BE CSBS 2024.pdf,pdf,downloaded,output\pdfs\BE_CSBS_2024_fdeb10eb.pdf
+https://csed.thapar.edu/upload/files/MECSE2025scheme.pdf,pdf,downloaded,output\pdfs\MECSE2025scheme_2020a86f.pdf
+https://csed.thapar.edu/upload/files/AI_ML24.pdf,pdf,downloaded,output\pdfs\AI_ML24_4eb92ba0.pdf
+https://www.thapar.edu/upload/files/BE CSBS 2021.pdf,pdf,downloaded,output\pdfs\BE_CSBS_2021_0e6eba1b.pdf
+https://www.thapar.edu/upload/files/BECOE_2022.pdf,pdf,downloaded,output\pdfs\BECOE_2022_51e75824.pdf
+https://www.thapar.edu/upload/files/BECSE2026_Scheme.pdf,pdf,downloaded,output\pdfs\BECSE2026_Scheme_6caeb2cd.pdf
+https://www.thapar.edu/upload/files/BE CSBS 2019.pdf,pdf,downloaded,output\pdfs\BE_CSBS_2019_8dc7fc5b.pdf
+https://csed.thapar.edu/upload/files/BECSE_2023.pdf,pdf,downloaded,output\pdfs\BECSE_2023_b0a321cc.pdf
+https://med.thapar.edu/,html,text_extracted,output\html_text\index_4d4909e6.txt
+https://med.thapar.edu/images/pdf/AcademicRegulations.pdf,pdf,skipped_duplicate_content:1d58d1ca,
+https://med.thapar.edu/programmes,html,text_extracted,output\html_text\programmes_703cc7c8.txt
+https://www.thapar.edu/images/mech_dept/ABETProgramme%20Enrollment%20and%20Degree%20Data.pdf,pdf,downloaded,output\pdfs\ABETProgramme_20Enrollment_20and_20Degree_20Data_c26822ef.pdf
+https://eced.thapar.edu/,html,text_extracted,output\html_text\index_43624dbc.txt
+https://eced.thapar.edu/images/pdf/AcademicRegulations.pdf,pdf,skipped_duplicate_content:1d58d1ca,
+https://eced.thapar.edu/faculty,html,text_extracted,output\html_text\faculty_a202ced3.txt
+https://eced.thapar.edu/programmes,html,text_extracted,output\html_text\programmes_f82a2961.txt
+https://thapar.edu/upload/files/MTech_VLSI_batch 2019.pdf,pdf,downloaded,output\pdfs\MTech_VLSI_batch_2019_887785ac.pdf
+https://eced.thapar.edu/upload/files/Scheme and Syllabus M.Tech. VLSI Design 2021-23.pdf,pdf,downloaded,output\pdfs\Scheme_and_Syllabus_M.Tech._VLSI_Design_2021-23_c58377f9.pdf
+https://eied.thapar.edu/,html,text_extracted,output\html_text\index_ac227b91.txt
+https://eied.thapar.edu/images/pdf/AcademicRegulations.pdf,pdf,skipped_duplicate_content:1d58d1ca,
+https://webkiosk.thapar.edu/,html,text_extracted,output\html_text\index_afa9a279.txt
+https://www.thapar.edu/misces,html,text_extracted,output\html_text\misces_8343b4a2.txt
+https://www.thapar.edu/upload/files/Quality Manual 2025V5.3.pdf,pdf,downloaded,output\pdfs\Quality_Manual_2025V5.3_572caccc.pdf
+https://www.thapar.edu/upload/files/Departmental Documented Information 2025V5.3.pdf,pdf,downloaded,output\pdfs\Departmental_Documented_Information_2025V5.3_a3087068.pdf
+https://thapar.edu/upload/files/Academic Documented Information 2025.pdf,pdf,downloaded,output\pdfs\Academic_Documented_Information_2025_de8d8be9.pdf
+https://www.thapar.edu/upload/files/System Documented Information 2025V5.3.pdf,pdf,downloaded,output\pdfs\System_Documented_Information_2025V5.3_b7cd05b9.pdf
+https://admission.thapar.edu,html,skipped_duplicate_content:49b29622,
+https://www.thapar.edu/admissions/pages/eligibility,html,text_extracted,output\html_text\eligibility_265aec05.txt
+https://webkiosk.thapar.edu/Application/?_ga=2.263356428.188901530.1605594689-213301553.1595228600,html,text_extracted,output\html_text\index_10e4277e.txt
+https://webkiosk.thapar.edu/Admission/index.jsp,html,text_extracted,output\html_text\index.jsp_e5fe42ca.txt
+https://www.thapar.edu/programmes/pages/chemical-engineering,html,text_extracted,output\html_text\chemical-engineering_2bb3cd28.txt
+https://www.thapar.edu/admissions/pages/scholarships,html,text_extracted,output\html_text\scholarships_f707e4ed.txt
+https://www.thapar.edu/upload/files/Notice_Alumni_dated_28.2.20.pdf,pdf,downloaded,output\pdfs\Notice_Alumni_dated_28.2.20_4e8ce900.pdf
+https://www.thapar.edu/upload/files/Notice for Merit-cum-Means Scholarship for the year 2018-19.pdf,pdf,downloaded,output\pdfs\Notice_for_Merit-cum-Means_Scholarship_for_the_year_2018-19_644eb875.pdf
+https://www.thapar.edu/upload/files/DATE EXTE-Merit-cum-Means (Alumni)Scholarship 2021-22.pdf,pdf,downloaded,output\pdfs\DATE_EXTE-Merit-cum-Means__Alumni_Scholarship_2021-22_3ca78972.pdf
+https://www.thapar.edu/upload/files/NOTICE-_GOVERNMENT_SCHOLARSHIP_SCHEMES_%28NSP%29_DATE_EXTENDED.pdf,pdf,downloaded,output\pdfs\NOTICE-_GOVERNMENT_SCHOLARSHIP_SCHEMES__28NSP_29_DATE_EXTENDED_b2b78f13.pdf
+https://www.thapar.edu/upload/files/Notice for TIET Class of 1988 & 1989 Scholarships.pdf,pdf,downloaded,output\pdfs\Notice_for_TIET_Class_of_1988___1989_Scholarships_b1fa8da9.pdf
+https://www.thapar.edu/upload/files/Notice MCM-Other Scholarship 2022-23.pdf,pdf,downloaded,output\pdfs\Notice_MCM-Other_Scholarship_2022-23_fb81ded5.pdf
+https://www.thapar.edu/upload/files/TENTATIVE MERIT LIST UG 2020 BATCH (4th Yr).pdf,pdf,downloaded,output\pdfs\TENTATIVE_MERIT_LIST_UG_2020_BATCH__4th_Yr__a33ae173.pdf
+https://www.thapar.edu/upload/files/NOTICE_NEW_SCHOLARSHIP_SCHEME-PUNJAB_GOVT..pdf,pdf,downloaded,output\pdfs\NOTICE_NEW_SCHOLARSHIP_SCHEME-PUNJAB_GOVT._3465e135.pdf
+https://www.thapar.edu/upload/files/NOTICE DATE EXTENSION (ALUMNI & OTHER SCHOLARSHIPS) 2022-23.pdf,pdf,downloaded,output\pdfs\NOTICE_DATE_EXTENSION__ALUMNI___OTHER_SCHOLARSHIPS__2022-23_1e6fa0d5.pdf
+https://www.thapar.edu/upload/files/NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21-%281.03.21%29.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21-_281.03.21_29_0cb3d90f.pdf
+https://www.thapar.edu/upload/files/AFFIDAVIT FOR DECLARING FAMILY(MCM).pdf,pdf,downloaded,output\pdfs\AFFIDAVIT_FOR_DECLARING_FAMILY_MCM__9c185d4a.pdf
+https://www.thapar.edu/upload/files/NOTICE AWARENES ABOUT GOVERNMENT SCHOLARSHIPS (2023-24).pdf,pdf,downloaded,output\pdfs\NOTICE_AWARENES_ABOUT_GOVERNMENT_SCHOLARSHIPS__2023-24__55691d45.pdf
+https://www.thapar.edu/upload/files/mcm_other.pdf,pdf,downloaded,output\pdfs\mcm_other_b6e74d6d.pdf
+https://www.thapar.edu/upload/files/NOTICE_CLOSING_DATES__ABOUT_GOVERNMENT_SCHOLARSHIPS_22.10.20_%281%29.pdf,pdf,downloaded,output\pdfs\NOTICE_CLOSING_DATES__ABOUT_GOVERNMENT_SCHOLARSHIPS_22.10.20__281_29_55d5b0d0.pdf
+https://www.thapar.edu/upload/files/TENTATIVE MERIT LIST PG 2022 BATCH (2nd Yr).pdf,pdf,downloaded,output\pdfs\TENTATIVE_MERIT_LIST_PG_2022_BATCH__2nd_Yr__b5eb6d8d.pdf
+https://www.thapar.edu/upload/files/5)MCM-UG & PG (except final year)-2020-21.pdf,pdf,downloaded,output\pdfs\5_MCM-UG___PG__except_final_year_-2020-21_67f7d9ab.pdf
+https://www.thapar.edu/upload/files/Notice for Post Matric (date extension) Govt.pdf,pdf,skipped_status_404,
+https://www.thapar.edu/upload/files/NOTICE-_GOVERNMENT_SCHOLARSHIP_%28NSP%29_SCHEME_DATE_EXTENDED_01.01.2021.pdf,pdf,downloaded,output\pdfs\NOTICE-_GOVERNMENT_SCHOLARSHIP__28NSP_29_SCHEME_DATE_EXTENDED_01.01.2021_5b5901ac.pdf
+https://www.thapar.edu/upload/files/NOTICE-ALUMNI_SCHOLARSHIP_2019-20.pdf,pdf,downloaded,output\pdfs\NOTICE-ALUMNI_SCHOLARSHIP_2019-20_99ce8787.pdf
+https://www.thapar.edu/upload/files/NOTICE-Merit_cum_means_2020-21-website.pdf,pdf,downloaded,output\pdfs\NOTICE-Merit_cum_means_2020-21-website_40d030dc.pdf
+https://www.thapar.edu/upload/files/MERIT_CUM_MEANS_SCHOLARSHIP_2019-20.pdf,pdf,downloaded,output\pdfs\MERIT_CUM_MEANS_SCHOLARSHIP_2019-20_829f0713.pdf
+https://www.thapar.edu/upload/files/NOTICE FOR DATE EXTNSION OF MERIT-CUM- MEANS  2023-24.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_DATE_EXTNSION_OF_MERIT-CUM-_MEANS__2023-24_7d90035f.pdf
+https://www.thapar.edu/upload/files/PROFORMA-TIET-DOAA-SCHMCM.pdf,pdf,downloaded,output\pdfs\PROFORMA-TIET-DOAA-SCHMCM_7c74d8e2.pdf
+https://www.thapar.edu/upload/files/6) OTHER MERIT SCHOLARSHIPS-2020-21.pdf,pdf,downloaded,output\pdfs\6__OTHER_MERIT_SCHOLARSHIPS-2020-21_259902d4.pdf
+https://www.thapar.edu/upload/files/2022-23 NSP Scholarship Receiptent (FRESH & RENEWAL).pdf,pdf,downloaded,output\pdfs\2022-23_NSP_Scholarship_Receiptent__FRESH___RENEWAL__1bef4b0d.pdf
+https://www.thapar.edu/upload/files/NOTICE FOR TIET MERIT CUM MEANS SCHOLARSHIP FOR THE YEAR 2021-22.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_TIET_MERIT_CUM_MEANS_SCHOLARSHIP_FOR_THE_YEAR_2021-22_db71afbe.pdf
+https://www.thapar.edu/upload/files/SCHOLARSHIP POLICY (2018-19).pdf,pdf,downloaded,output\pdfs\SCHOLARSHIP_POLICY__2018-19__519820ce.pdf
+https://www.thapar.edu/upload/files/Notice_of_I_M_Thapar_Scholarship.pdf,pdf,downloaded,output\pdfs\Notice_of_I_M_Thapar_Scholarship_6c2f3e36.pdf
+https://www.thapar.edu/upload/files/DATE EXTE-Merit Scholarship (Alumni) 2021-22.pdf,pdf,downloaded,output\pdfs\DATE_EXTE-Merit_Scholarship__Alumni__2021-22_ff7ee4d8.pdf
+https://www.thapar.edu/upload/files/NOTICE_AWARENES_ABOUT_GOVERNMENT_SCHOLARSHIPS.pdf,pdf,downloaded,output\pdfs\NOTICE_AWARENES_ABOUT_GOVERNMENT_SCHOLARSHIPS_51e1844d.pdf
+https://www.thapar.edu/upload/files/Notice_for_NSP.pdf,pdf,downloaded,output\pdfs\Notice_for_NSP_aaff4a03.pdf
+https://www.thapar.edu/upload/files/2)MERIT- FINAL YEAR UG  with bank account details 08.06.21.pdf,pdf,downloaded,output\pdfs\2_MERIT-_FINAL_YEAR_UG__with_bank_account_details_08.06.21_e86c0666.pdf
+https://www.thapar.edu/upload/files/FINAL LIST OF ALUMNI & OTHER SCHOLARSHIPS 2021-22.pdf,pdf,downloaded,output\pdfs\FINAL_LIST_OF_ALUMNI___OTHER_SCHOLARSHIPS_2021-22_322fa103.pdf
+https://www.thapar.edu/upload/files/MERIT & MCM SCHOLARSHIP (FINAL YEAR ST.) FOR THE YEAR 2018-19.pdf,pdf,downloaded,output\pdfs\MERIT___MCM_SCHOLARSHIP__FINAL_YEAR_ST.__FOR_THE_YEAR_2018-19_f337b462.pdf
+https://www.thapar.edu/upload/files/TENTATIVE MERIT LIST UG 2022 BATCH(2nd Yr).pdf,pdf,downloaded,output\pdfs\TENTATIVE_MERIT_LIST_UG_2022_BATCH_2nd_Yr__3273cb7d.pdf
+https://www.thapar.edu/upload/files/NOTICE FOR TIET MERIT CUM MEANS SCHOLARSHIP FOR THE YEAR 2022-23.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_TIET_MERIT_CUM_MEANS_SCHOLARSHIP_FOR_THE_YEAR_2022-23_aa99022f.pdf
+https://www.thapar.edu/upload/files/NOTICE-REVISED CLOSING DATES OF POST MATRIC.pdf.pdf,pdf,skipped_status_404,
+https://www.thapar.edu/upload/files/Notification 2023-24_Pragati Saksham and Swanath Schemes.pdf,pdf,downloaded,output\pdfs\Notification_2023-24_Pragati_Saksham_and_Swanath_Schemes_6b7266ac.pdf
+https://www.thapar.edu/upload/files/NOTICE MERIT-Alumni 2022-23.pdf,pdf,downloaded,output\pdfs\NOTICE_MERIT-Alumni_2022-23_48707bfa.pdf
+https://www.thapar.edu/upload/files/Notice for TIET Class of 1965 & 1987_Scholarships.pdf,pdf,downloaded,output\pdfs\Notice_for_TIET_Class_of_1965___1987_Scholarships_fa25fd8f.pdf
+https://www.thapar.edu/upload/files/SCHOLARSHIP POLICY 2021-22 (updated) 13.12.21.pdf,pdf,downloaded,output\pdfs\SCHOLARSHIP_POLICY_2021-22__updated__13.12.21_8ee6cfd7.pdf
+https://www.thapar.edu/upload/files/MERIT SCHOLARSHIP 1st Year(LEET-2020 BATCH)FOR 2020-21.pdf,pdf,downloaded,output\pdfs\MERIT_SCHOLARSHIP_1st_Year_LEET-2020_BATCH_FOR_2020-21_72aee54e.pdf
+https://www.thapar.edu/upload/files/FINAL LIST OF ALUMNI & OTHER SCHOLARSHIP AWARDEE FOR 2022-23.pdf,pdf,downloaded,output\pdfs\FINAL_LIST_OF_ALUMNI___OTHER_SCHOLARSHIP_AWARDEE_FOR_2022-23_766f53ce.pdf
+https://www.thapar.edu/upload/files/NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21-%2811.02.21%29.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21-_2811.02.21_29_e6472ab0.pdf
+https://www.thapar.edu/upload/files/Notice for Merit-Cum-Means Scholarship (Other) for the year 2018-19.pdf,pdf,downloaded,output\pdfs\Notice_for_Merit-Cum-Means_Scholarship__Other__for_the_year_2018-19_28c8048f.pdf
+https://www.thapar.edu/upload/files/2018-19 NSP Scholarship Receiptent (FRESH & RENEWAL).pdf,pdf,downloaded,output\pdfs\2018-19_NSP_Scholarship_Receiptent__FRESH___RENEWAL__29be6ae8.pdf
+https://www.thapar.edu/upload/files/Notice for IM Thapar_Scholarship.pdf,pdf,downloaded,output\pdfs\Notice_for_IM_Thapar_Scholarship_8766d542.pdf
+https://www.thapar.edu/upload/files/Sh._Ram_Gopal_Narula_MCM_Scholarship_proposal.pdf,pdf,downloaded,output\pdfs\Sh._Ram_Gopal_Narula_MCM_Scholarship_proposal_2370b385.pdf
+https://www.thapar.edu/upload/files/2019-20 NSP Scholarship Receiptent (FRESH & RENEWAL).pdf,pdf,downloaded,output\pdfs\2019-20_NSP_Scholarship_Receiptent__FRESH___RENEWAL__71d81df0.pdf
+https://www.thapar.edu/upload/files/NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21-%2801.02.21%29.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21-_2801.02.21_29_3e49b5a6.pdf
+https://www.thapar.edu/upload/files/NOTICE-_NSP_DATE_EXTENSION-MSJE_%2819.02.21%29.pdf,pdf,downloaded,output\pdfs\NOTICE-_NSP_DATE_EXTENSION-MSJE__2819.02.21_29_3dc87dff.pdf
+https://www.thapar.edu/upload/files/DATE EXE-Merit-cum-Means (Other) Scholarship 2021-22.pdf,pdf,downloaded,output\pdfs\DATE_EXE-Merit-cum-Means__Other__Scholarship_2021-22_0222362b.pdf
+https://www.thapar.edu/upload/files/MERIT_SCHOLARSHIP_2019-20_%28WEBSITE_01.07.20%29.pdf,pdf,downloaded,output\pdfs\MERIT_SCHOLARSHIP_2019-20__28WEBSITE_01.07.20_29_22c6c5d8.pdf
+https://www.thapar.edu/upload/files/MERIT SCHOLARSHIP 1st Year  (MCA & MSc.-2020 BATCH) FOR 2020-21.pdf,pdf,downloaded,output\pdfs\MERIT_SCHOLARSHIP_1st_Year___MCA___MSc.-2020_BATCH__FOR_2020-21_0f09492e.pdf
+https://www.thapar.edu/upload/files/Notice_Merit-cum-Means_%28Alumni%29_2020-21.pdf,pdf,downloaded,output\pdfs\Notice_Merit-cum-Means__28Alumni_29_2020-21_68724dc5.pdf
+https://www.thapar.edu/upload/files/MERIT_CUM_MEANS_%28OTHER%29_SCHOLARSHIP_2019-20.pdf,pdf,downloaded,output\pdfs\MERIT_CUM_MEANS__28OTHER_29_SCHOLARSHIP_2019-20_df5f083b.pdf
+https://www.thapar.edu/upload/files/Merit_Cum_Means_Scholarship.pdf,pdf,downloaded,output\pdfs\Merit_Cum_Means_Scholarship_9516cbba.pdf
+https://www.thapar.edu/upload/files/Awareness About  Government.pdf,pdf,downloaded,output\pdfs\Awareness_About__Government_99a5044c.pdf
+https://www.thapar.edu/upload/files/mcm_alumni.pdf,pdf,downloaded,output\pdfs\mcm_alumni_0fcd5732.pdf
+https://www.thapar.edu/upload/files/FINAL LIST OF MERIT-CUM MEANS SCHOLARSHIP AWARDEE FOR 2022-23.pdf,pdf,downloaded,output\pdfs\FINAL_LIST_OF_MERIT-CUM_MEANS_SCHOLARSHIP_AWARDEE_FOR_2022-23_f1c53358.pdf
+https://www.thapar.edu/upload/files/2020-21 NSP Scholarship Receiptent (FRESH & RENEWAL).pdf,pdf,downloaded,output\pdfs\2020-21_NSP_Scholarship_Receiptent__FRESH___RENEWAL__37a3dc46.pdf
+https://www.thapar.edu/upload/files/MERIT SCHOLARSHIP (EXCEPT FINAL YEAR ST.) FOR THE YEAR 2018-19.pdf,pdf,skipped_too_large,
+https://www.thapar.edu/upload/files/4)MERIT SCHOLARSHIP UG (except final year)-2020-21.pdf,pdf,downloaded,output\pdfs\4_MERIT_SCHOLARSHIP_UG__except_final_year_-2020-21_a28d3000.pdf
+https://www.thapar.edu/upload/files/FINAL LIST TIET MERIT-CUM-MEANS SCHOLARSHIP 2021-22 (PG & UG).pdf,pdf,downloaded,output\pdfs\FINAL_LIST_TIET_MERIT-CUM-MEANS_SCHOLARSHIP_2021-22__PG___UG__614a406b.pdf
+https://www.thapar.edu/upload/files/1)MERIT-FINAL YEAR PG  with bank account details 08.06.21.pdf,pdf,downloaded,output\pdfs\1_MERIT-FINAL_YEAR_PG__with_bank_account_details_08.06.21_3422f700.pdf
+https://www.thapar.edu/upload/files/FINAL LIST OF MERIT SCHOLARSHIP AWARDEEFOR2022-23.pdf,pdf,downloaded,output\pdfs\FINAL_LIST_OF_MERIT_SCHOLARSHIP_AWARDEEFOR2022-23_f57d1ab5.pdf
+https://www.thapar.edu/upload/files/REVISED TENTATIVE MERIT LIST (PG & UG) STUDENTS FOR 2023-24  .pdf,pdf,downloaded,output\pdfs\REVISED_TENTATIVE_MERIT_LIST__PG___UG__STUDENTS_FOR_2023-24___f7e751ce.pdf
+https://www.thapar.edu/upload/files/Notice_Merit_Scholarship_%28Alumni%29_2020-21%281%29.pdf,pdf,downloaded,output\pdfs\Notice_Merit_Scholarship__28Alumni_29_2020-21_281_29_cd7fb954.pdf
+https://www.thapar.edu/upload/files/FINAL LIST TIET MERIT (R) SCHOLARSHIP 2021-22 (PG & UG).pdf,pdf,downloaded,output\pdfs\FINAL_LIST_TIET_MERIT__R__SCHOLARSHIP_2021-22__PG___UG__69c8a836.pdf
+https://www.thapar.edu/upload/files/SCHOLARSHIPS_%26_TUITION_FREESHIPS__2020-21-website.pdf,pdf,downloaded,output\pdfs\SCHOLARSHIPS__26_TUITION_FREESHIPS__2020-21-website_35f6d1d2.pdf
+https://www.thapar.edu/upload/files/NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21.pdf,pdf,downloaded,output\pdfs\NOTICE_FOR_EXTENSION_OF_DATE_FOR-Merit_cum_means_2020-21_14ea8d73.pdf
+https://www.thapar.edu/upload/files/NOTICE AWARENES ABOUT GOVERNMENT SCHOLARSHIPS 2021-22.pdf,pdf,downloaded,output\pdfs\NOTICE_AWARENES_ABOUT_GOVERNMENT_SCHOLARSHIPS_2021-22_fdcab2b5.pdf
+https://www.thapar.edu/upload/files/EXTENSIONDATEMerit cum means 2021-22-(17.03.21).pdf,pdf,downloaded,output\pdfs\EXTENSIONDATEMerit_cum_means_2021-22-_17.03.21__0e5a9b51.pdf
+https://www.thapar.edu/upload/files/NOTICE FORDATEEXTNSIONOFMERITCUMMEANSSCHOLARSHIP2022-23.pdf,pdf,downloaded,output\pdfs\NOTICE_FORDATEEXTNSIONOFMERITCUMMEANSSCHOLARSHIP2022-23_6359197d.pdf
+https://www.thapar.edu/upload/files/Notice_other_sch..pdf,pdf,downloaded,output\pdfs\Notice_other_sch._94177a66.pdf
+https://www.thapar.edu/upload/files/Notice for Alumni scholarship (Date Extension) for the year 2018-19.pdf,pdf,downloaded,output\pdfs\Notice_for_Alumni_scholarship__Date_Extension__for_the_year_2018-19_4988cbf8.pdf
+https://www.thapar.edu/upload/files/Notice for Merit-Cum-Means (Other)date extension for the year 2018-19.pdf,pdf,downloaded,output\pdfs\Notice_for_Merit-Cum-Means__Other_date_extension_for_the_year_2018-19_36291adb.pdf
+https://www.thapar.edu/upload/files/TENTATIVE MERIT LIST UG 2021 BATCH (3rd Yr).pdf,pdf,downloaded,output\pdfs\TENTATIVE_MERIT_LIST_UG_2021_BATCH__3rd_Yr__6d12ed8c.pdf
+https://www.thapar.edu/upload/files/MCM%2C_ALUMNI_%26_OTHER_SCHOLARSHIP_2019-20_%28website_01.07.20%29.pdf,pdf,downloaded,output\pdfs\MCM_2C_ALUMNI__26_OTHER_SCHOLARSHIP_2019-20__28website_01.07.20_29_d560f63d.pdf
+https://www.thapar.edu/upload/files/7)ALUMNI SCHOLARSHIPS-2020-21.pdf,pdf,downloaded,output\pdfs\7_ALUMNI_SCHOLARSHIPS-2020-21_9b1602de.pdf
+https://www.thapar.edu/upload/files/Alumni_Sch._2019-20.pdf,pdf,downloaded,output\pdfs\Alumni_Sch._2019-20_c1a475aa.pdf
+"https://www.thapar.edu/upload/files/TOP CLASS EDUCATION-OBC,EBC, DNT STUDENTS 2022-23.pdf",pdf,downloaded,output\pdfs\TOP_CLASS_EDUCATION-OBC_EBC__DNT_STUDENTS_2022-23_95c50658.pdf
+https://www.thapar.edu/upload/files/SCHOLARSHIPS_FREESHIP_%282019-20%29.pdf,pdf,downloaded,output\pdfs\SCHOLARSHIPS_FREESHIP__282019-20_29_61de90c0.pdf
+https://www.thapar.edu/upload/files/Punjabscholarship_Notice.pdf,pdf,downloaded,output\pdfs\Punjabscholarship_Notice_d831369d.pdf
+https://www.thapar.edu/upload/files/Notice for Merit-Cum-Means-Scholarship (date extension) for 2018-19.pdf,pdf,downloaded,output\pdfs\Notice_for_Merit-Cum-Means-Scholarship__date_extension__for_2018-19_13971764.pdf
+https://www.thapar.edu/upload/files/Notice MCM-Other Scholarship-II 15.03.22.pdf,pdf,downloaded,output\pdfs\Notice_MCM-Other_Scholarship-II_15.03.22_6831a0e9.pdf
+https://www.thapar.edu/upload/files/Notice_Merit-cum-Means_%28Others%29_2020-21.pdf,pdf,downloaded,output\pdfs\Notice_Merit-cum-Means__28Others_29_2020-21_3d3f2d3b.pdf
+https://www.thapar.edu/upload/files/3)MCM-FINAL YEAR UG  & PG with bank account details.pdf,pdf,downloaded,output\pdfs\3_MCM-FINAL_YEAR_UG____PG_with_bank_account_details_d2bc7262.pdf
+https://www.thapar.edu/upload/files/NOTICE-GURU_HARKRISHAN_EDUCATION.pdf,pdf,downloaded,output\pdfs\NOTICE-GURU_HARKRISHAN_EDUCATION_2b533fcc.pdf
+https://www.thapar.edu/upload/files/TIET Scholarship Policy 2022-23.pdf,pdf,downloaded,output\pdfs\TIET_Scholarship_Policy_2022-23_0c1c0132.pdf
+https://www.thapar.edu/upload/files/Notice for Post Matric Scholarship (Govt.).pdf,pdf,downloaded,output\pdfs\Notice_for_Post_Matric_Scholarship__Govt.__aa4570da.pdf
+https://www.thapar.edu/upload/files/merit_alumni.pdf,pdf,downloaded,output\pdfs\merit_alumni_a752840b.pdf
+https://www.thapar.edu/upload/files/Notice-Other_Merit__Scholarships_2020-21.pdf,pdf,downloaded,output\pdfs\Notice-Other_Merit__Scholarships_2020-21_ec3c9dfc.pdf
+https://www.thapar.edu/upload/files/AICTE-SWANATH SCHOLARSHIP SCHEME 2021-22.pdf,pdf,downloaded,output\pdfs\AICTE-SWANATH_SCHOLARSHIP_SCHEME_2021-22_926ba5e4.pdf
+https://www.thapar.edu/upload/files/MERIT-CUM-MEANS SCHOLARSHIP FOR THE YEAR 2018-19.pdf,pdf,downloaded,output\pdfs\MERIT-CUM-MEANS_SCHOLARSHIP_FOR_THE_YEAR_2018-19_2e5d6f11.pdf
+https://www.thapar.edu/upload/files/NOTICE-Pragti_and_Saksham_Scholarship_2020-21.pdf,pdf,downloaded,output\pdfs\NOTICE-Pragti_and_Saksham_Scholarship_2020-21_f373bb28.pdf
+https://www.thapar.edu/upload/files/2021-22 NSP Scholarship Receiptent (FRESH & RENEWAL).pdf,pdf,downloaded,output\pdfs\2021-22_NSP_Scholarship_Receiptent__FRESH___RENEWAL__242564a0.pdf
+https://www.thapar.edu/upload/files/Notice for Alumni Scholarship for the year 2018-19.pdf,pdf,downloaded,output\pdfs\Notice_for_Alumni_Scholarship_for_the_year_2018-19_e61672e4.pdf
+https://www.thapar.edu/upload/files/SCHOLARSHIP POLICY 2023-24.pdf,pdf,downloaded,output\pdfs\SCHOLARSHIP_POLICY_2023-24_fa4e132f.pdf
+https://www.thapar.edu/upload/files/Merit_Cum_Means_%28other%29_Scholarship.pdf,pdf,downloaded,output\pdfs\Merit_Cum_Means__28other_29_Scholarship_7452c7b2.pdf
+https://www.thapar.edu/upload/files/TIETMERITCUMMEANSSCh YEAR 2023-24.pdf,pdf,downloaded,output\pdfs\TIETMERITCUMMEANSSCh_YEAR_2023-24_1c49ddd3.pdf
+https://www.thapar.edu/upload/files/NOTICE_BOOKING.COM_2019-20.pdf,pdf,downloaded,output\pdfs\NOTICE_BOOKING.COM_2019-20_5ac8b5cb.pdf
+https://www.thapar.edu/upload/files/NOTICE MCM-ALUMNI 2022-23.pdf,pdf,downloaded,output\pdfs\NOTICE_MCM-ALUMNI_2022-23_87d7779e.pdf
+https://www.thapar.edu/upload/files/NOTICE-_GOVERNMENT_SCHOLARSHIP_%28NSP%29_SCHEME_DATE_EXTENDED_31.12.2020.pdf,pdf,downloaded,output\pdfs\NOTICE-_GOVERNMENT_SCHOLARSHIP__28NSP_29_SCHEME_DATE_EXTENDED_31.12.2020_644bb7e1.pdf
+https://www.thapar.edu/upload/files/NOTICE-NSP ext.pdf,pdf,downloaded,output\pdfs\NOTICE-NSP_ext_7361337f.pdf
+https://www.thapar.edu/upload/files/EIL_SCHOLARSHIP_2019-NEW.pdf,pdf,downloaded,output\pdfs\EIL_SCHOLARSHIP_2019-NEW_6ac3248c.pdf
+https://www.thapar.edu/programmes/pages/electronics-and-computer-engineering,html,text_extracted,output\html_text\electronics-and-computer-engineering_1e68038e.txt
+https://www.thapar.edu/programmes/pages/mechanical-engineering-production,html,text_extracted,output\html_text\mechanical-engineering-production_9d0ebc15.txt
+https://www.thapar.edu/programmes/pages/btech-in-mechatronics,html,text_extracted,output\html_text\btech-in-mechatronics_ebc1bdec.txt
+https://www.thapar.edu/programmes/pages/me-mtech,html,text_extracted,output\html_text\me-mtech_d193e772.txt
+https://www.thapar.edu/programmes/pages/electronics-instrumentation-control-engineering,html,text_extracted,output\html_text\electronics-instrumentation-control-engineering_c7f07469.txt
+https://www.thapar.edu/programmes/pages/civil-engineering,html,text_extracted,output\html_text\civil-engineering_f8865e26.txt
+https://www.thapar.edu/programmes/pages/electrical-engineering,html,text_extracted,output\html_text\electrical-engineering_5918df3f.txt
+https://www.thapar.edu/programmes/pages/be-btech-biomedical-engineering1,html,text_extracted,output\html_text\be-btech-biomedical-engineering1_012904bc.txt
+https://www.thapar.edu/programmes/pages/computer-engineering,html,text_extracted,output\html_text\computer-engineering_334bff8e.txt
+https://www.thapar.edu/programmes/pages/mechanical-engineering,html,text_extracted,output\html_text\mechanical-engineering_f6a0658d.txt
+https://www.thapar.edu/programmes/pages/doctor-of-philosophy,html,text_extracted,output\html_text\doctor-of-philosophy_b40060f0.txt
+https://thapar.edu/images/admission17/PhD%20Admission%20Notification-III.PDF,pdf,downloaded,output\pdfs\PhD_20Admission_20Notification-III_404ad2a0.PDF
+https://thapar.edu/images/admission17/PhD%20Admission%20Notification-I.PDF,pdf,downloaded,output\pdfs\PhD_20Admission_20Notification-I_57bf496f.PDF
+https://thapar.edu/images/admission17/PhD%20Admission%20Notification-V.PDF,pdf,downloaded,output\pdfs\PhD_20Admission_20Notification-V_0938f1d0.PDF
+https://thapar.edu/images/admission17/PhD_Result-2017.pdf,pdf,downloaded,output\pdfs\PhD_Result-2017_3e0c1ee7.pdf
+https://thapar.edu/images/admission17/PhD%20Admission%20Notification-IV.PDF,pdf,downloaded,output\pdfs\PhD_20Admission_20Notification-IV_b36b17f6.PDF
+https://thapar.edu/images/admission17/FREQUENTLY%20ASKED%20QUESTIONS%20FAQ.pdf,pdf,downloaded,output\pdfs\FREQUENTLY_20ASKED_20QUESTIONS_20FAQ_13a47c72.pdf
+https://thapar.edu/images/admission17/BRIEF%20INTRODUCTION.pdf,pdf,downloaded,output\pdfs\BRIEF_20INTRODUCTION_2808291c.pdf
+https://thapar.edu/images/admission17/PhD%20Admission%20Notification-VI.PDF,pdf,downloaded,output\pdfs\PhD_20Admission_20Notification-VI_2e4e348e.PDF
+https://thapar.edu/images/admission17/DISCIPLINE.pdf,pdf,downloaded,output\pdfs\DISCIPLINE_58a095dd.pdf
+https://thapar.edu/images/admission17/ANTI-ALCOHOLANTI-DRUG%20ABUSE%20POLICY.pdf,pdf,downloaded,output\pdfs\ANTI-ALCOHOLANTI-DRUG_20ABUSE_20POLICY_0d6b83fe.pdf
+https://thapar.edu/images/admission17/HOSTEL%20FACILITIES.pdf,pdf,downloaded,output\pdfs\HOSTEL_20FACILITIES_ffadaf52.pdf
+https://thapar.edu/images/admission17/IMPORTANT%20DATES%20AND%20INFORMATION.pdf,pdf,downloaded,output\pdfs\IMPORTANT_20DATES_20AND_20INFORMATION_664acb38.pdf
+https://thapar.edu/images/admission17/FEE%20CHALLAN%20KOTAK.pdf,pdf,downloaded,output\pdfs\FEE_20CHALLAN_20KOTAK_34e2ef45.pdf
+https://thapar.edu/images/admission17/TUITION%20FEE%20AND%20OTHER%20DUES.pdf,pdf,downloaded,output\pdfs\TUITION_20FEE_20AND_20OTHER_20DUES_88386f58.pdf
+https://thapar.edu/images/admission17/Venue%20for%20entrance%20exam.pdf,pdf,downloaded,output\pdfs\Venue_20for_20entrance_20exam_7de6d095.pdf
+https://thapar.edu/images/admission17/FEATURES%20OF%20UG-PG%20PROGRAMS.pdf,pdf,downloaded,output\pdfs\FEATURES_20OF_20UG-PG_20PROGRAMS_fc676154.pdf
+https://thapar.edu/images/admission17/STUDENT%20ACTIVITIES.pdf,pdf,downloaded,output\pdfs\STUDENT_20ACTIVITIES_52598db6.pdf
+https://thapar.edu/images/admission17/FORMATS%20OF%20CERTIFICATES.pdf,pdf,downloaded,output\pdfs\FORMATS_20OF_20CERTIFICATES_481dd0b0.pdf
+https://thapar.edu/images/admission17/PhD%20Admission%20Notification-II.PDF,pdf,downloaded,output\pdfs\PhD_20Admission_20Notification-II_60d6360b.PDF
+https://thapar.edu/images/admission17/NAVA%20NALANDA%20CENTRAL%20LIBRARY.pdf,pdf,skipped_status_404,
+https://thapar.edu/images/admission17/SCHOLARSHIPS.pdf,pdf,downloaded,output\pdfs\SCHOLARSHIPS_8e5c9158.pdf
+https://thapar.edu/images/admission17/ADMISSION%20FOR%20FN-NRI%20CANDIDATES.pdf,pdf,downloaded,output\pdfs\ADMISSION_20FOR_20FN-NRI_20CANDIDATES_19c1175a.pdf
+https://thapar.edu/images/admission17/PhD%20Interview%20and%20Admission%20Schedule%20July%202017.pdf,pdf,downloaded,output\pdfs\PhD_20Interview_20and_20Admission_20Schedule_20July_202017_fb6295a3.pdf
+https://thapar.edu/images/admission17/PRIZES%20AND%20MEDALS.pdf,pdf,downloaded,output\pdfs\PRIZES_20AND_20MEDALS_0abfbacb.pdf
+https://thapar.edu/images/admission17/LMTSM_RAT-2017%20SYLLABI.pdf,pdf,downloaded,output\pdfs\LMTSM_RAT-2017_20SYLLABI_632506d8.pdf
+https://thapar.edu/images/admission17/PREFACE.pdf,pdf,downloaded,output\pdfs\PREFACE_380fd319.pdf
+https://thapar.edu/images/admission17/ADMISSION%20TO%20PHD%20PROGRAMS.pdf,pdf,downloaded,output\pdfs\ADMISSION_20TO_20PHD_20PROGRAMS_d60b82cc.pdf
+https://thapar.edu/images/admission17/ACADEMIC%20CALENDAR201718.pdf,pdf,downloaded,output\pdfs\ACADEMIC_20CALENDAR201718_c3f6347c.pdf
+https://www.thapar.edu/programmes/pages/electronics-communication-engineering,html,text_extracted,output\html_text\electronics-communication-engineering_677bccd2.txt
+https://www.thapar.edu/faculties/category/centers/tifac-core-in-agro-industrial-biotechnology,html,text_extracted,output\html_text\tifac-core-in-agro-industrial-biotechnology_08309c0b.txt
+https://www.thapar.edu/faculties/category/departments/computer-science-engineering,html,error:unreachable,
+https://www.thapar.edu/faculties/category/departments/distance-education,html,text_extracted,output\html_text\distance-education_4220fbad.txt
+https://www.thapar.edu/faculties/category/centers/experiential-learning-centre1,html,text_extracted,output\html_text\experiential-learning-centre1_6c682b99.txt
+https://www.thapar.edu/faculties/category/centers/center-of-excellence-in-emerging-materials1,html,skipped_duplicate_content:a49f2bcc,
+https://www.thapar.edu/faculties/category/departments/civil-engineering,html,error:unreachable,
+https://www.thapar.edu/faculties/category/departments/basic-engineering-sciences1,html,text_extracted,output\html_text\basic-engineering-sciences1_da57d23e.txt
+https://www.thapar.edu/faculties/category/schools/school-of-mathematics,html,error:unreachable,
+https://www.thapar.edu/faculties/category/centers/science-technology-entrepreneurs-park-step,html,text_extracted,output\html_text\science-technology-entrepreneurs-park-step_faee9fb9.txt
+https://www.thapar.edu/faculties/category/centers/venture-lab1,html,skipped_duplicate_content:a49f2bcc,
+https://www.thapar.edu/faculties/category/schools/school-of-chemistry-biochemistry,html,error:unreachable,
+https://www.thapar.edu/faculties/category/centers/center-for-industrial-liasion-placement-cilp,html,text_extracted,output\html_text\center-for-industrial-liasion-placement-cilp_57e9aea8.txt
+https://www.thapar.edu/faculties/category/centers/central-workshop,html,text_extracted,output\html_text\central-workshop_be20ce43.txt
+https://www.thapar.edu/faculties/category/centers/centre-of-information-and-technology-management-citm,html,text_extracted,output\html_text\centre-of-information-and-technology-management-citm_c4873115.txt
+https://www.thapar.edu/faculties/category/centers/centre-for-training-development-ctd,html,text_extracted,output\html_text\centre-for-training-development-ctd_5a1a55da.txt
+https://www.thapar.edu/faculties/category/schools/thapar-school-of-liberal-arts-sciences-tslas-1,html,error:unreachable,
+https://www.thapar.edu/faculties/category/centers/centre-of-excellence-data-science-and-artificial-intelligence1,html,skipped_duplicate_content:a49f2bcc,
+https://www.thapar.edu/faculties/category/departments/electronics-communication-engineering,html,error:unreachable,
+https://www.thapar.edu/faculties/category/departments/department-of-biotechnology,html,error:unreachable,
+https://www.thapar.edu/faculties/category/schools/school-of-humanities-social-sciences,html,error:unreachable,
+https://www.thapar.edu/faculties/category/departments/mechanical-engineering-department,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/centers/centre-for-academic-practices-and-student-learning1,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/schools/school-of-physics-materials-science,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/centers/nava-nalanda-central-library,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/departments/electrical-instrumentation-engineering,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/departments/chemical-engineering,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/schools/school-of-energy-and-environment,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/centers/disability-resource-centre,html,skipped_dead_host,
+https://www.thapar.edu/faculties/category/centers/alumni-relations-link1,html,skipped_dead_host,
+https://csed.thapar.edu/misces,html,error:unreachable,
+https://csed.thapar.edu/Accreditations & Rankings,html,error:unreachable,
+https://csed.thapar.edu/placements,html,text_extracted,output\html_text\placements_77946b5e.txt
+https://csed.thapar.edu/students/pages/student-grievance-redressal,html,error:unreachable,
+https://csed.thapar.edu/Regulatory Compliances,html,error:unreachable,
+https://csed.thapar.edu/pages/experiential-learning-centre-elc-activities,html,text_extracted,output\html_text\experiential-learning-centre-elc-activities_0f06108f.txt
+https://csed.thapar.edu/facultydetails/OTYx,html,text_extracted,output\html_text\OTYx_d7c3b146.txt
+https://thapar.edu/upload/files/Dr. Seema Bawa publication.pdf,pdf,downloaded,output\pdfs\Dr._Seema_Bawa_publication_0cf58846.pdf
+https://csed.thapar.edu/pages/funded-projects,html,text_extracted,output\html_text\funded-projects_0ece0863.txt
+https://csed.thapar.edu/pages/contact-us,html,text_extracted,output\html_text\contact-us_0e4979f9.txt
+https://csed.thapar.edu/pages/computing-facilities,html,text_extracted,output\html_text\computing-facilities_d1e5e9b3.txt
+https://csed.thapar.edu/pages/computing-skill-enhancement,html,text_extracted,output\html_text\computing-skill-enhancement_d1299007.txt
+https://csed.thapar.edu/upload/files/ACM Events.pdf,pdf,downloaded,output\pdfs\ACM_Events_32c30a15.pdf
+https://csed.thapar.edu/upload/files/OWASP Events.pdf,pdf,downloaded,output\pdfs\OWASP_Events_2a2b2f95.pdf
+https://csed.thapar.edu/upload/files/IEEE Events.pdf,pdf,downloaded,output\pdfs\IEEE_Events_44bbe970.pdf
+https://csed.thapar.edu/Times Higher Education,html,error:unreachable,
+https://csed.thapar.edu/outreaches/pages,html,error:unreachable,
+https://csed.thapar.edu/newsandevent,html,text_extracted,output\html_text\newsandevent_dac0c3ba.txt
+https://csed.thapar.edu/students/pages/reaching-tiet,html,error:unreachable,
+https://csed.thapar.edu/achievements,html,text_extracted,output\html_text\achievements_0d37dafe.txt
+https://csed.thapar.edu/Careers at TIET,html,error:unreachable,
+https://csed.thapar.edu/Vacancy,html,error:unreachable,
+https://csed.thapar.edu/galleries,html,text_extracted,output\html_text\galleries_f3af6c5f.txt
+https://csed.thapar.edu/facultydetails/OTcw,html,text_extracted,output\html_text\OTcw_49d7c9f5.txt

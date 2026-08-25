@@ -134,13 +134,48 @@ embedding_model = HuggingFaceAPIEmbeddings(
     token=hf_token
 )
 
-# Qdrant Vector Store
-client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
-vector_store = QdrantVectorStore(
-    client=client,
-    collection_name=COLLECTION_NAME,
-    embedding=embedding_model,
-)
+GROQ_API_KEY_2 = get_env_safe("GROQ_API_KEY_2") or get_env_safe("GROQ_API_KEY_FALLBACK") or GROQ_API_KEY
+
+# Qdrant Vector Store setup with Cloud + Local Fallback
+local_db_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "qdrant_db")
+
+client = None
+vector_store = None
+
+if QDRANT_URL and QDRANT_API_KEY:
+    try:
+        remote_client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY, timeout=5)
+        remote_client.get_collection(COLLECTION_NAME)
+        client = remote_client
+        vector_store = QdrantVectorStore(
+            client=client,
+            collection_name=COLLECTION_NAME,
+            embedding=embedding_model,
+        )
+        print(f"[RAG] Successfully connected to Qdrant Cloud cluster: {QDRANT_URL}")
+    except Exception as cloud_err:
+        print(f"[RAG] Qdrant Cloud unavailable ({cloud_err}). Switching to local Qdrant embedded DB...")
+
+if vector_store is None:
+    print(f"[RAG] Initializing local Qdrant embedded database from: {local_db_dir}")
+    client = QdrantClient(path=local_db_dir)
+    try:
+        existing = [c.name for c in client.get_collections().collections]
+        if COLLECTION_NAME not in existing:
+            print(f"[RAG] Creating local collection '{COLLECTION_NAME}'...")
+            from qdrant_client.models import Distance, VectorParams
+            client.create_collection(
+                collection_name=COLLECTION_NAME,
+                vectors_config=VectorParams(size=768, distance=Distance.COSINE)
+            )
+    except Exception as create_err:
+        print(f"[RAG] Error checking/creating collection: {create_err}")
+
+    vector_store = QdrantVectorStore(
+        client=client,
+        collection_name=COLLECTION_NAME,
+        embedding=embedding_model,
+    )
 
 # Groq Client
 groq_client = Groq(api_key=GROQ_API_KEY)
@@ -149,10 +184,11 @@ groq_client = Groq(api_key=GROQ_API_KEY)
 # LLM ROUTING
 # --------------------------------------------------
 class ModelRouter:
-    """Encapsulates primary and fallback LLM routing with failover logic."""
-    def __init__(self, primary_model: str, fallback_model: str, api_key: str):
+    """Encapsulates primary and fallback LLM routing with failover logic and multi-key support."""
+    def __init__(self, primary_model: str, fallback_model: str, api_key: str, fallback_api_key: str = None):
         self.primary_model = primary_model
         self.fallback_model = fallback_model
+        fb_key = fallback_api_key or api_key
         
         self.primary_llm = ChatGroq(
             model=primary_model,
@@ -164,7 +200,7 @@ class ModelRouter:
             model=fallback_model,
             temperature=0.1,
             max_tokens=1024,
-            api_key=api_key
+            api_key=fb_key
         )
 
     def invoke(self, prompt):
@@ -182,7 +218,8 @@ class ModelRouter:
 model_router = ModelRouter(
     primary_model=PRIMARY_TEXT_MODEL,
     fallback_model=FALLBACK_TEXT_MODEL,
-    api_key=GROQ_API_KEY
+    api_key=GROQ_API_KEY,
+    fallback_api_key=GROQ_API_KEY_2
 )
 
 llm = RunnableLambda(model_router.invoke)

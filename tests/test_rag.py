@@ -56,3 +56,14 @@ def test_format_context():
     assert len(formatted) <= 16500
     assert "doc1.pdf" in formatted
     assert "[Context truncated]" in formatted
+
+# Test API health check endpoint
+def test_health_check():
+    from fastapi.testclient import TestClient
+    from app.main import app
+    
+    client = TestClient(app)
+    response = client.get("/api/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"
+

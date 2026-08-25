@@ -13,9 +13,14 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-# Copy backend and frontend files
+# Copy application files, PDFs, and ingestion script
 COPY app ./app
 COPY frontend ./frontend
+COPY output ./output
+COPY ingest.py .
+
+# Build local vector database index during Docker build
+RUN python ingest.py
 
 # Expose server port
 EXPOSE 8000

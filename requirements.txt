@@ -12,3 +12,7 @@ gunicorn
 python-multipart
 redis
 gtts
+pymupdf
+pypdf
+pdfplumber
+fastembed
