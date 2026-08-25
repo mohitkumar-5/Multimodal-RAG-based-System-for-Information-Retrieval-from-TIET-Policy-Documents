@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: tiet-policylens
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: HF_TOKEN
+        sync: false
