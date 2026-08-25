@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  policylens:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tiet_policylens_app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    restart: unless-stopped
