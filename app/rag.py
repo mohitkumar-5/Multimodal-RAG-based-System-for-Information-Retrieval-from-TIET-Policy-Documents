@@ -178,7 +178,7 @@ if vector_store is None:
     )
 
 # Groq Client
-groq_client = Groq(api_key=GROQ_API_KEY)
+groq_client = Groq(api_key=GROQ_API_KEY or "gsk_dummy_key_for_init")
 
 # --------------------------------------------------
 # LLM ROUTING
@@ -188,13 +188,14 @@ class ModelRouter:
     def __init__(self, primary_model: str, fallback_model: str, api_key: str, fallback_api_key: str = None):
         self.primary_model = primary_model
         self.fallback_model = fallback_model
-        fb_key = fallback_api_key or api_key
+        p_key = api_key or "gsk_dummy_key_for_init"
+        fb_key = fallback_api_key or p_key
         
         self.primary_llm = ChatGroq(
             model=primary_model,
             temperature=0.1,
             max_tokens=1024,
-            api_key=api_key
+            api_key=p_key
         )
         self.fallback_llm = ChatGroq(
             model=fallback_model,

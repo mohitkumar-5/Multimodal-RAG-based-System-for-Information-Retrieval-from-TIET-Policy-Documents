@@ -13,14 +13,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-# Copy application files, PDFs, and ingestion script
+# Copy application files and pre-built vector database index
 COPY app ./app
 COPY frontend ./frontend
-COPY output ./output
-COPY ingest.py .
-
-# Build local vector database index during Docker build
-RUN python ingest.py
+COPY qdrant_db ./qdrant_db
 
 # Expose server port
 EXPOSE 8000
